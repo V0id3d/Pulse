@@ -7,7 +7,7 @@
 
 require('./bootstrap');
 
-Vue.component('alert', require('./components/Alert.vue'));
+Vue.component('qz-alert', require('./components/Alert.vue'));
 
 const app = new Vue({
     el: '#app'

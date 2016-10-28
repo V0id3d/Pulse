@@ -24,7 +24,7 @@
             },
             timeout: {
                 type: Number,
-                default: 3000
+                default: 0
             }
         },
         filters: {
@@ -58,7 +58,9 @@
             }
         },
         mounted () {
-            setTimeout(() => { this.show = false }, this.timeout);
+            if(this.timeout != 0) {
+                setTimeout(() => { this.show = false }, this.timeout);
+            }
         },
     };
 </script>

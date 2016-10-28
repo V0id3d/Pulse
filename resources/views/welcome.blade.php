@@ -360,38 +360,38 @@
             <div class="row">
                 {{--Error Alert Example--}}
                 <div class="col-md-3">
-                    <alert type="error">
-                        Simple Error Alert Example
-                    </alert>
+                    <qz-alert type="error">
+                        Example
+                    </qz-alert>
                 </div>
 
                 {{--Warning Alert Example--}}
                 <div class="col-md-3">
-                    <alert type="warning">
-                        Simple Warning Alert Example
-                    </alert>
+                    <qz-alert type="warning">
+                        Example
+                    </qz-alert>
                 </div>
 
                 {{--Success Alert Example--}}
                 <div class="col-md-3">
-                    <alert type="success">
-                        Simple Success Alert Example
-                    </alert>
+                    <qz-alert type="success">
+                        Example
+                    </qz-alert>
                 </div>
 
                 {{--Info Alert Example--}}
                 <div class="col-md-3">
-                    <alert type="info">
-                        Simple Info Alert Example
-                    </alert>
+                    <qz-alert type="info">
+                        Example
+                    </qz-alert>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                 <pre><code>
-    &lt;alert type="error">
-        Simple Error Alert Example
-    &lt;/alert>
+    &lt;qz-alert type="error">
+        Example
+    &lt;/qz-alert>
                 </code></pre>
                 </div>
             </div>
@@ -400,43 +400,43 @@
             <div class="row">
                 {{--Error Alert Example--}}
                 <div class="col-md-3">
-                    <alert type="error">
+                    <qz-alert type="error">
                         <h4 slot="heading"><i class="fa fa-times-circle"></i>&nbsp;Error</h4>
                         Error With Heading Example
-                    </alert>
+                    </qz-alert>
                 </div>
 
                 {{--Warning Alert Example--}}
                 <div class="col-md-3">
-                    <alert type="warning">
+                    <qz-alert type="warning">
                         <h4 slot="heading"><i class="fa fa-exclamation-circle"></i>&nbsp;Warning</h4>
                         Warning With Heading Example
-                    </alert>
+                    </qz-alert>
                 </div>
 
                 {{--Success Alert Example--}}
                 <div class="col-md-3">
-                    <alert type="success">
+                    <qz-alert type="success">
                         <h4 slot="heading"><i class="fa fa-check-circle"></i>&nbsp;Success</h4>
                         Success With Heading Example
-                    </alert>
+                    </qz-alert>
                 </div>
 
                 {{--Info Alert Example--}}
                 <div class="col-md-3">
-                    <alert type="info">
+                    <qz-alert type="info">
                         <h4 slot="heading"><i class="fa fa-info-circle"></i>&nbsp;Info</h4>
                         Info With Heading Example
-                    </alert>
+                    </qz-alert>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                 <pre><code>
-    &lt;alert type="error">
+    &lt;qz-alert type="error">
         &lt;h4 slot="heading">&lt;i class="fa fa-times-circle">&lt;/i>&nbsp;Error&lt;/h4>
-        Simple Error Alert Example
-    &lt;/alert>
+        Error With Heading Example
+    &lt;/qz-alert>
                 </code></pre>
                 </div>
             </div>
@@ -1220,28 +1220,28 @@
 {{--<div class="container">--}}
 {{--<div class="row">--}}
 {{--<div class="col-md-6">--}}
-{{--<alert type="error">--}}
+{{--<qz-alert type="error">--}}
 {{--<h4 slot="heading"><i class="fa fa-times-circle"></i>&nbsp;Error</h4>--}}
 {{--<strong>Test</strong> Testing first component--}}
-{{--</alert>--}}
+{{--</qz-alert>--}}
 {{--</div>--}}
 {{--<div class="col-md-6">--}}
-{{--<alert type="error">--}}
+{{--<qz-alert type="error">--}}
 {{--<strong>Test</strong> Testing first component--}}
-{{--</alert>--}}
+{{--</qz-alert>--}}
 {{--</div>--}}
 {{--</div>--}}
 {{--<div class="row">--}}
 {{--<div class="col-md-6">--}}
-{{--<alert type="success">--}}
+{{--<qz-alert type="success">--}}
 {{--<h4 slot="heading"><i class="fa fa-check-circle"></i>&nbsp;Success</h4>--}}
 {{--<strong>Test</strong> Testing first component--}}
-{{--</alert>--}}
+{{--</qz-alert>--}}
 {{--</div>--}}
 {{--<div class="col-md-6">--}}
-{{--<alert type="success">--}}
+{{--<qz-alert type="success">--}}
 {{--<strong>Test</strong> Testing first component--}}
-{{--</alert>--}}
+{{--</qz-alert>--}}
 {{--</div>--}}
 {{--</div>--}}
 {{--</div>--}}
