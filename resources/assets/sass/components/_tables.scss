@@ -1,0 +1,134 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    This is where all the table classes are located to allow for use around your application
+//----------------------------------------------------------------------------------------------------------------------
+//                                                       Tables
+//----------------------------------------------------------------------------------------------------------------------
+//                                                    Table ( .table )
+//      Sets the default settings for anything with the .table class as well as the proper modifiers and elements.
+//----------------------------------------------------------------------------------------------------------------------
+.table {
+  background-color: $body-bg;
+  margin-bottom: $spacer;
+  max-width: 100%;
+  width: 100%;
+
+  th,
+  td {
+    border-top: $table-border-color solid $table-border-width;
+    padding: $table-cell-padding;
+    vertical-align: top;
+  }
+
+  thead th {
+    border-bottom: $table-border-color solid (2 * $table-border-width);
+    vertical-align: bottom;
+  }
+
+  tbody + tbody {
+    border-top: $table-border-color solid (2 * $table-border-width);
+  }
+
+  @include modifier('sm'){
+    th,
+    td {
+      padding: $table-sm-cell-padding;
+    }
+  }
+
+  @include modifier('bordered') {
+    border: $table-border-color solid $table-border-width;
+
+    thead {
+      th,
+      td {
+        border-bottom-width: (2 * $table-border-width);
+      }
+    }
+  }
+
+  @include modifier('striped'){
+    tbody tr:nth-of-type(odd) {
+      background-color: $table-bg-accent;
+    }
+  }
+
+  @include modifier('hover'){
+    tbody tr {
+      @include hover {
+        background-color: $table-bg-hover;
+      }
+    }
+  }
+
+  @include modifier('inverse') {
+    background-color: $gray-dark;
+    color: $gray-lighter;
+
+    th,
+    td,
+    thead th {
+      border-color: $gray;
+    }
+
+    &.table-bordered {
+      border: 0;
+    }
+  }
+
+  // TODO: Need to work this out as it is not working!!
+  @include modifier('responsive'){
+    display: block;
+    width: 100%;
+    min-height: 0%;
+    overflow-x: auto;
+  }
+
+  @include modifier('reflow'){
+    thead {
+      float: left;
+    }
+
+    tbody {
+      display: block;
+      white-space: nowrap;
+    }
+
+    th,
+    td {
+      border-left: $table-border-color solid $table-border-width;
+      border-top: $table-border-color solid $table-border-width;
+
+      &:last-child {
+        border-right: $table-border-color solid $table-border-width;
+      }
+    }
+
+    thead,
+    tbody,
+    tfoot {
+      &:last-child {
+        tr:last-child th,
+        tr:last-child td {
+          border-bottom: $table-border-color solid $table-border-width;
+        }
+      }
+    }
+
+    tr {
+      float: left;
+
+      th,
+      td {
+        border: $table-border-color solid $table-border-width;
+        display: block !important;
+      }
+    }
+  }
+}

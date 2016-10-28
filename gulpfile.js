@@ -13,7 +13,9 @@ require('laravel-elixir-vue-2');
  |
  */
 
+elixir.config.css.autoprefix.options.browsers = ['> 5%', 'Last 2 versions', 'IE 9'];
 elixir((mix) => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+    mix.sass('pulse.scss')
+        .webpack('app.js')
+        .copy('./node_modules/font-awesome/fonts/**', 'public/fonts');
 });

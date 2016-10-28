@@ -1,0 +1,81 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    QZion Pulse is a CSS framework that is used in most of the projects by QZion it utilizes Vue.js as well as the
+//    display element flexbox. the hope is that this will grow and have all the same components that main stream CSS
+//    frameworks have if you are interested in being a part of this project feel free to drop a line to info@QZion.net
+//    I would be glad to talk about things we can do.
+//----------------------------------------------------------------------------------------------------------------------
+//                                                       Options
+//----------------------------------------------------------------------------------------------------------------------
+code,
+kbd,
+pre,
+samp {
+  font-family: $font-family-monospace;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                     Inline Code
+//----------------------------------------------------------------------------------------------------------------------
+code {
+  @include border-radius($border-radius);
+  background-color: $code-bg;
+  color: $code-color;
+  font-size: $code-font-size;
+  padding: $code-padding-y $code-padding-x;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                      User input typically entered via keyboard
+//----------------------------------------------------------------------------------------------------------------------
+kbd {
+  @include border-radius($border-radius-sm);
+  @include box-shadow($kbd-box-shadow);
+
+  background-color: $kbd-bg;
+  color: $kbd-color;
+  font-size: $code-font-size;
+  padding: $code-padding-y $code-padding-x;
+
+  kbd {
+    @include box-shadow(none);
+
+    font-size: 100%;
+    font-weight: $nested-kbd-font-weight;
+    padding: 0;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                Blocks of Code
+//----------------------------------------------------------------------------------------------------------------------
+pre {
+  color: $pre-color;
+  background-color: $pre-bg;
+  border-left: 3px solid $pre-border-color;
+  display: block;
+  font-size: $code-font-size;
+  margin-bottom: 1rem;
+  margin-top: 0;
+
+  code {
+    background-color: transparent;
+    border-radius: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                       Enable scrollable blocks of code
+//----------------------------------------------------------------------------------------------------------------------
+.pre--scrollable {
+  max-height: $pre-scrollable-max-height;
+  overflow-y: scroll;
+}

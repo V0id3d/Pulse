@@ -1,0 +1,140 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    These mixins are used to help you better interact with the page grid. You will more then likely not even use
+//    any of these mixins in your everyday process.
+//----------------------------------------------------------------------------------------------------------------------
+//                                             Mixin: make-container
+//                                Generate a container based off of your gutters
+//----------------------------------------------------------------------------------------------------------------------
+@mixin make-container($gutter: $grid-gutter-width-base) {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left:  ($gutter / 2);
+  padding-right: ($gutter / 2);
+  @if not $enable-flex {
+    @include clearfix();
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                         Mixin: make-container-max-widths
+//                 For each breakpoint, define the maximum width of the container in media query
+//----------------------------------------------------------------------------------------------------------------------
+@mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
+  @each $breakpoint, $container-max-width in $max-widths {
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      width: $container-max-width;
+      max-width: 100%;
+    }
+  }
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                            Mixin: make-gutters
+//                                  Generate the gutters for each breakpoint
+//----------------------------------------------------------------------------------------------------------------------
+@mixin make-gutters($gutters: $grid-gutter-widths) {
+  @each $breakpoint in map-keys($gutters) {
+    @include media-breakpoint-up($breakpoint) {
+      $gutter: map-get($gutters, $breakpoint);
+      padding-right: ($gutter / 2);
+      padding-left:  ($gutter / 2);
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                            Mixin: make-row
+//                                  Generate rows for each breakpoint
+//----------------------------------------------------------------------------------------------------------------------
+@mixin make-row($gutters: $grid-gutter-widths) {
+  @if $enable-flex {
+    display: flex;
+    flex-wrap: wrap;
+  } @else {
+    @include clearfix();
+  }
+
+  @each $breakpoint in map-keys($gutters) {
+    @include media-breakpoint-up($breakpoint) {
+      $gutter: map-get($gutters, $breakpoint);
+      margin-right: ($gutter / -2);
+      margin-left:  ($gutter / -2);
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                            Mixin: make-col-ready
+//----------------------------------------------------------------------------------------------------------------------
+@mixin make-col-ready($gutters: $grid-gutter-widths) {
+  position: relative;
+  min-height: 1px;
+
+  @if $enable-flex {
+    width: 100%;
+  }
+
+  @each $breakpoint in map-keys($gutters) {
+    @include media-breakpoint-up($breakpoint) {
+      $gutter: map-get($gutters, $breakpoint);
+      padding-right: ($gutter / 2);
+      padding-left:  ($gutter / 2);
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                            Mixin: make-col
+//----------------------------------------------------------------------------------------------------------------------
+@mixin make-col($size, $columns: $grid-columns) {
+  @if $enable-flex {
+    flex: 0 0 percentage($size / $columns);
+    max-width: percentage($size / $columns);
+  } @else {
+    float: left;
+    width: percentage($size, $columns);
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                            Mixin: make-col-offset
+//----------------------------------------------------------------------------------------------------------------------
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  margin-left: percentage($size / $columns);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                            Mixin: make-col-push
+//----------------------------------------------------------------------------------------------------------------------
+@mixin make-col-push($size, $columns: $grid-columns) {
+  left: if($size > 0, percentage($size / $columns), auto);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                            Mixin:make-col-pull
+//----------------------------------------------------------------------------------------------------------------------
+@mixin make-col-pull($size, $columns: $grid-columns) {
+  right: if($size > 0, percentage($size / $columns), auto);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                            Mixin: make-col-modifier
+//----------------------------------------------------------------------------------------------------------------------
+@mixin make-col-modifier($type, $size, $columns) {
+  @if $type == push {
+    @include make-col-push($size, $columns);
+  } @else if $type == pull {
+    @include make-col-pull($size, $columns);
+  } @else if $type == offset {
+    @include make-col-offset($size, $columns);
+  }
+}
+

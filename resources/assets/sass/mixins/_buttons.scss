@@ -1,0 +1,128 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    These mixins are used to help you better interact with the button components. You should use these as much as
+//    possible to allow for uniformity throughout the project.
+//----------------------------------------------------------------------------------------------------------------------
+//                                               button-variant
+//          Allows you to quickly spin up a new color combination with any button that will have a solid fill
+//----------------------------------------------------------------------------------------------------------------------
+@mixin button-variant($color, $background, $border) {
+  $active-background: darken($background, 10%);
+  $active-border: darken($border, 12%);
+
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+  @include box-shadow($btn-box-shadow);
+
+  @include hover {
+    background-color: $active-background;
+    border-color: $active-border;
+    color: $color;
+  }
+
+  &:focus,
+  &.focus {
+    background-color: $active-background;
+    border-color: $active-border;
+    color: $color;
+  }
+
+  &:active,
+  &.active,
+  .open > &.dropdown--toggle {
+    background-color: $active-background;
+    background-image: none;
+    border-color: $active-border;
+    color: $color;
+    @include box-shadow($btn-active-box-shadow);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: darken($background, 17%);
+      border-color: darken($border, 25%);
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    &:focus,
+    &.focus {
+      background-color: $background;
+      border-color: $border;
+    }
+    @include hover {
+      background-color: $background;
+      border-color: $border;
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                             button-outline-variant
+//    Allows you to quickly spin up a new color combination with any button that will have no fill just outline
+//----------------------------------------------------------------------------------------------------------------------
+@mixin button-outline-variant($color) {
+  color: $color;
+  background-image: none;
+  background-color: transparent;
+  border-color: $color;
+
+  @include hover {
+    color: #fff;
+    background-color: $color;
+    border-color: $color;
+  }
+
+  &:focus,
+  &.focus {
+    color: #fff;
+    background-color: $color;
+    border-color: $color;
+  }
+
+  &:active,
+  &.active,
+  .open > &.dropdown--toggle {
+    color: #fff;
+    background-color: $color;
+    border-color: $color;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: #fff;
+      background-color: darken($color, 17%);
+      border-color: darken($color, 25%);
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    &:focus,
+    &.focus {
+      border-color: lighten($color, 20%);
+    }
+
+    @include hover {
+      border-color: lighten($color, 20%);
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                button-size
+//    Allows you to determine the proper size of a button and will take into account padding, font size and border
+//----------------------------------------------------------------------------------------------------------------------
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+  padding: $padding-y $padding-x;
+  $font-size: $font-size;
+  @include border-radius($border-radius);
+}

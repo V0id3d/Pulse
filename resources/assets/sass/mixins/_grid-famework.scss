@@ -1,0 +1,78 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    These mixins are used to help you better interact with the page grid. You will more then likely not even use
+//    any of these mixins in your everyday process.
+//----------------------------------------------------------------------------------------------------------------------
+//                                         Mixin: make-grid-columns
+//                      Only used to generate the correct number of grid classes given
+//----------------------------------------------------------------------------------------------------------------------
+@mixin make-grid-columns($columns: $grid-columns, $gutters: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
+  %grid-column {
+    position: relative;
+    min-height: 1px;
+
+    @if $enable-flex {
+      width: 100%;
+    }
+
+    @include make-gutters($gutters);
+  }
+
+  $breakpoint-counter: 0;
+  @each $breakpoint in map-keys($breakpoints) {
+    $breakpoint-counter: ($breakpoint-counter + 1);
+
+    .col-#{$breakpoint} {
+      @extend %grid-column;
+    }
+
+    @for $i from 1 through $columns {
+      .col-#{$breakpoint}-#{$i} {
+        @extend %grid-column;
+      }
+    }
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      @if $enable-flex {
+        .col-#{$breakpoint} {
+          flex-basis: 0;
+          flex-grow: 1;
+          max-width: 100%;
+        }
+      }
+
+      @for $i from 1 through $columns {
+        .col-#{$breakpoint}-#{$i} {
+          @include make-col($i, $columns);
+        }
+      }
+
+      @each $modifier in (pull, push) {
+        @for $i from 0 through $columns {
+          .#{$modifier}-#{$breakpoint}-#{$i} {
+            @include make-col-modifier($modifier, $i, $columns)
+          }
+        }
+      }
+
+      @for $i from 0 through ($columns - 1) {
+        @if $breakpoint-counter != 1 or $i != 0 {
+          .offset-#{$breakpoint}-#{$i} {
+            @include make-col-modifier(offset, $i, $columns)
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+

@@ -1,0 +1,115 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    These mixins are used to help you better interact with the elements hover states. You should defiantly try to
+//    use these instead of calling :hover and so on.
+//----------------------------------------------------------------------------------------------------------------------
+//                                                  Mixin: hover
+//                                  Quick way to call the hover pseudo class
+// a{
+//   @include hover {
+//     color: #000;
+//   }
+// }
+// CSS Output:
+// .a {
+//   a:hover {
+//     color: #000;
+//   }
+// }
+//----------------------------------------------------------------------------------------------------------------------
+@mixin hover {
+  &:hover {
+    @content;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                  Mixin: hover-focus
+//                                  Quick way to call the hover and focus pseudo classes
+// a{
+//   @include hover-focus {
+//     color: #000;
+//   }
+// }
+// CSS Output:
+// .a {
+//   a:hover,
+//   a:focus {
+//     color: #000;
+//   }
+// }
+//----------------------------------------------------------------------------------------------------------------------
+@mixin hover-focus {
+  @if $enable-hover-media-query {
+    &:focus {
+      @content;
+    }
+
+    @include hover {
+      @content;
+    }
+
+  } @else {
+    &:hover,
+    &:focus {
+      @content
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                  Mixin: hover-focus-active
+//                                  Quick way to call the hover, focus, active pseudo classes
+// a{
+//   @include hover-focus {
+//     color: #000;
+//   }
+// }
+// CSS Output:
+// .a {
+//   a:hover,
+//   a:focus,
+//   a:active {
+//     color: #000;
+//   }
+// }
+//----------------------------------------------------------------------------------------------------------------------
+@mixin hover-focus-active {
+  @if $enable-hover-media-query {
+    &:focus,
+    &:active {
+      @content
+    }
+
+    @include hover { @content }
+  } @else {
+    &:focus,
+    &:active,
+    &:hover {
+      @content
+    }
+  }
+}
+
+@mixin plain-hover-focus {
+  @if $enable-hover-media-query {
+    &,
+    &:focus {
+      @content
+    }
+    @include hover { @content }
+  }
+  @else {
+    &,
+    &:focus,
+    &:hover {
+      @content
+    }
+  }
+}

@@ -1,0 +1,102 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    QZion Pulse is a CSS framework that is used in most of the projects by QZion it utilizes Vue.js as well as the
+//    display element flexbox. the hope is that this will grow and have all the same components that main stream CSS
+//    frameworks have if you are interested in being a part of this project feel free to drop a line to info@QZion.net
+//    I would be glad to talk about things we can do.
+//----------------------------------------------------------------------------------------------------------------------
+//                                                     Page Options
+//----------------------------------------------------------------------------------------------------------------------
+$body-bg:    lighten(#000, 15%);
+$body-color: darken($white, 20%);
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                    Navbar Options
+//----------------------------------------------------------------------------------------------------------------------
+$navbar-header-padding-y: 0;
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                     Alert Options
+//----------------------------------------------------------------------------------------------------------------------
+$alert-danger-bg: #ff0000;
+$alert-danger-border: lighten($alert-danger-bg, 5%);
+$alert-danger-text: darken($alert-danger-bg, 25%);
+
+
+$alert-warning-bg: #ffee00;
+$alert-warning-border: lighten($alert-warning-bg, 5%);
+$alert-warning-text: darken($alert-warning-bg, 25%);
+
+$alert-success-bg: #00ff00;
+$alert-success-border: lighten($alert-success-bg, 5%);
+$alert-success-text: darken($alert-success-bg, 25%);
+
+$alert-info-bg: #007FFF;
+$alert-info-border: lighten($alert-info-bg, 5%);
+$alert-info-text: darken($alert-info-bg, 25%);
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                    Table Options
+//----------------------------------------------------------------------------------------------------------------------
+$table-cell-padding:            .75rem;
+$table-sm-cell-padding:         .3rem;
+
+$table-bg:                      transparent;
+$table-bg-accent:               lighten($body-bg, 10%);
+$table-bg-hover:                lighten($body-bg, 10%);
+$table-bg-active:               $table-bg-hover;
+
+$table-border-width:            $border-width;
+$table-border-color:            $gray-lighter;
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                   Button Options
+//----------------------------------------------------------------------------------------------------------------------
+$btn-primary-color:              $white;
+$btn-primary-bg:                 $brand-primary;
+$btn-primary-border:             $btn-primary-bg;
+
+$btn-secondary-color:            $white;
+$btn-secondary-bg:               $gray-light;
+$btn-secondary-border:           $btn-secondary-bg;
+
+$btn-info-color:                 $white;
+$btn-info-bg:                    $brand-info;
+$btn-info-border:                $btn-info-bg;
+
+$btn-success-color:              $white;
+$btn-success-bg:                 $brand-success;
+$btn-success-border:             $btn-success-bg;
+
+$btn-warning-color:              $white;
+$btn-warning-bg:                 $brand-warning;
+$btn-warning-border:             $btn-warning-bg;
+
+$btn-danger-color:               $white;
+$btn-danger-bg:                  $brand-danger;
+$btn-danger-border:              $btn-danger-bg ;
+
+$btn-link-disabled-color:        $gray-light;
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                   Code Options
+//----------------------------------------------------------------------------------------------------------------------
+$pre-bg:                      $translucent-white;
+$pre-color:                   darken($white, 20%);
+$pre-border-color:            $brand-accent;
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                           CSS Override ( <section> )
+//----------------------------------------------------------------------------------------------------------------------
+section {
+  border-bottom: 1px solid darken($white, 20%);
+  margin-bottom: 15px;
+}
+
+

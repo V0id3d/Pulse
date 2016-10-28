@@ -1,0 +1,122 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    These mixins are used to help you better interact with the media breakpoints. You should use these as much as
+//    possible to allow for uniformity throughout the project.
+//----------------------------------------------------------------------------------------------------------------------
+//                                    Breakpoint viewport sizes and media queries
+//              Breakpoints are defined as a map of (name: minimum width) , order from small to large
+//----------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                             Function: breakpoint-next
+//                            Name of the next breakpoint, or null for last breakpoint.
+//                                   breakpoint-next(sm); -> will return md
+//                     breakpoint-next(xs, (xs: 0, sm: 544px, md: 768px)) -> will return sm
+//                 breakpoint-next(xs, $breakpoint-names: (0, 544px, 768px)) -> will return sm
+//----------------------------------------------------------------------------------------------------------------------
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                             Function: breakpoint-min
+//                  Get the minimum breakpoint width. Null for the smallest (first) breakpoint
+//                     breakpoint-min(sm, (xs:0, sm: 544px, md: 768px)) -> will return 544px;
+//----------------------------------------------------------------------------------------------------------------------
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                             Function: breakpoint-max
+//                  Get the maximum breakpoint width. Null for the largest (last) breakpoint
+//                     breakpoint-max(sm, (xs:0, sm: 544px, md: 768px)) -> will return 767px;
+//----------------------------------------------------------------------------------------------------------------------
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $next: breakpoint-next($name, $breakpoints);
+  @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                             Mixin: media-breakpoint-up
+//  Media of at least the minimum breakpoint width. No query for the smallest breakpoint. makes @content apply to the
+//  given breakpoint and wider.
+//
+//  @include media-breakpoint-up($sm, (xs:0, sm: 544px, md: 768px)){
+//    background-color: #000;
+// }
+//  Will set the background color for anything that is 544px wide and above to black and will not touch anything else.
+//----------------------------------------------------------------------------------------------------------------------
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min){
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                             Mixin: media-breakpoint-down
+//  Media of at most the maximum breakpoint width. No query for the smallest breakpoint. makes @content apply to the
+//  given breakpoint and narrower.
+//
+//  @include media-breakpoint-down($sm, (xs:0, sm: 544px, md: 768px)){
+//    background-color: #000;
+// }
+//  Will set the background color for anything that is 767px wide and bellow to black and will not touch anything else.
+//----------------------------------------------------------------------------------------------------------------------
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media(max-width: $max){
+      @content
+    }
+  } @else {
+    @content;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                             Mixin: media-breakpoint-only
+//  Media between the breakpoints minimum and maximum widths. no minimum for the smallest and none for largest one..
+//
+//  @include media-breakpoint-only($sm, (xs:0, sm: 544px, md: 768px)){
+//    background-color: #000;
+// }
+//  Will set the background color for anything that is 544px to 767px wide to black and will not touch anything else.
+//----------------------------------------------------------------------------------------------------------------------
+@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+  @include media-breakpoint-up($name, $breakpoints) {
+    @include media-breakpoint-down($name, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                             Mixin: media-breakpoint-between
+//  Media between the specified breakpoints minimum and maximum widths.
+//
+//  @include media-breakpoint-between($sm, $md (xs:0, sm: 544px, md: 768px, lg: 1200)){
+//    background-color: #000;
+// }
+//  Will set the background color for anything that is 544px to 1199px wide to black and will not touch anything else.
+//----------------------------------------------------------------------------------------------------------------------
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+  @include media-breakpoint-up($lower, $breakpoints) {
+    @include media-breakpoint-down($upper, $breakpoints) {
+      @content;
+    }
+  }
+}

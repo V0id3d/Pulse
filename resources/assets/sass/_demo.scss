@@ -1,0 +1,55 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    QZion Pulse is a CSS framework that is used in most of the projects by QZion it utilizes Vue.js as well as the
+//    display element flexbox. the hope is that this will grow and have all the same components that main stream CSS
+//    frameworks have if you are interested in being a part of this project feel free to drop a line to info@QZion.net
+//    I would be glad to talk about things we can do.
+//----------------------------------------------------------------------------------------------------------------------
+//                                       These are just things to demo items
+//----------------------------------------------------------------------------------------------------------------------
+.demo {
+  pre {
+    background-color: $translucent-white;
+    border-left: $brand-accent solid 3px;
+    color: $white;
+    margin-top: 1rem;
+  }
+
+  @include element('box') {
+    box-sizing: border-box;
+    position: relative;
+    min-height: 1rem;
+    margin-bottom: 0;
+    background: #007FFF;
+    border: 1px solid #FFF;
+    border-radius: 2px;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+
+    @include modifier('row') {
+      margin-bottom: 1rem;
+    }
+
+    @include modifier('first') {
+      background: #0066CC;
+      border-color: #007FFF;
+    }
+
+    @include modifier('nested') {
+      background: #003366;
+      border-color: #007FFF;
+    }
+
+    @include modifier('box-container') {
+      box-sizing: border-box;
+      padding: 0.5rem;
+    }
+  }
+}

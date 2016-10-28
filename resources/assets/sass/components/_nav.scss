@@ -1,0 +1,149 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    QZion Pulse is a CSS framework that is used in most of the projects by QZion it utilizes Vue.js as well as the
+//    display element flexbox. the hope is that this will grow and have all the same components that main stream CSS
+//    frameworks have if you are interested in being a part of this project feel free to drop a line to info@QZion.net
+//    I would be glad to talk about things we can do.
+//----------------------------------------------------------------------------------------------------------------------
+//                                                       Options
+//----------------------------------------------------------------------------------------------------------------------
+.nav {
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+
+  @include element('link') {
+    display: inline-block;
+
+    &.disabled {
+      color: $nav-disabled-link-color;
+
+      @include plain-hover-focus {
+        background-color: $nav-disabled-link-hover-bg;
+        color: $nav-disabled-link-hover-color;
+        cursor: $cursor-disabled;
+      }
+    }
+
+    @include hover-focus {
+      text-decoration: none;
+    }
+
+  }
+
+  @include element('tabs') {
+    border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+    @include clearfix;
+
+    .nav__item {
+      float: left;
+      margin-bottom: -$nav-tabs-border-width;
+      + .nav__item {
+        margin-left: $nav-item-margin;
+      }
+    }
+
+    .nav__link {
+      border: $nav-tabs-border-width solid transparent;
+      display: block;
+      padding: $nav-link-padding;
+
+      @include border-top-radius($nav-tabs-border-radius);
+
+      @include hover-focus {
+        border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
+      }
+
+      &.disabled {
+        @include plain-hover-focus {
+          color: $nav-disabled-link-color;
+          background-color: transparent;
+          border-color: transparent;
+        }
+      }
+    }
+
+    .nav__link.active,
+    .nav__item.open .nav__link {
+      @include plain-hover-focus {
+        background-color: $nav-tabs-active-link-hover-bg;
+        border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color transparent;
+        color: $nav-tabs-active-link-hover-color;
+      }
+    }
+
+    .dropdown__menu {
+      margin-top: -$nav-tabs-border-width;
+      @include border-top-radius(0);
+    }
+
+  }
+
+  @include element('pills') {
+    @include clearfix();
+
+    .nav__item {
+      float: left;
+
+      + .nav__item {
+        margin-left: $nav-item-margin;
+      }
+    }
+
+    .nav__link {
+      display: block;
+      padding: $nav-link-padding;
+      @include border-radius($nav-pills-border-radius);
+    }
+
+    .nav__link.active,
+    .nav__item.open .nav__link {
+      @include plain-hover-focus {
+        background-color: $nav-pills-active-link-bg;
+        color: $nav-pills-active-link-color;
+        cursor: default;
+      }
+    }
+  }
+
+  @include modifier('inline') {
+    .nav__item {
+      display: inline-block;
+    }
+
+    .nav__item + .nav__item,
+    .nav__link + .nav__link {
+      margin-left: $nav-item-inline-spacer;
+    }
+  }
+
+  @include modifier('stacked') {
+    .nav__item {
+      display: block;
+      float: none;
+
+      + .nav__item {
+        margin-left: 0;
+        margin-top: $nav-item-margin;
+      }
+    }
+  }
+}
+
+.tab {
+  @include element('content') {
+    > .tab__pane {
+      display: none;
+    }
+
+    > .active {
+      display: block;
+    }
+  }
+}

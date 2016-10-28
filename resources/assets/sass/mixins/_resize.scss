@@ -1,0 +1,19 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    These mixins are used to help you better interact with the resizing elements. You should use these as much as
+//    possible to allow for uniformity throughout the project.
+//----------------------------------------------------------------------------------------------------------------------
+//                                               Resize By Directions
+//                                        Options: horizontal, vertical, both
+//                                           @include resizable('vertical')
+//----------------------------------------------------------------------------------------------------------------------
+@mixin resizable($direction) {
+  resize: $direction; // Options: horizontal, vertical, both
+  overflow: auto; // Per CSS3 UI, `resize` only applies when `overflow` isn't `visible`
+}

@@ -1,0 +1,210 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//                                                  Base styles for buttons
+//----------------------------------------------------------------------------------------------------------------------
+//                                                    Buttons ( .btn )
+//----------------------------------------------------------------------------------------------------------------------
+// scss-lint:disable QualifyingElement
+
+//
+// Base styles
+//
+.btn {
+  border: transparent solid $input-btn-border-width;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
+  text-align: center;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  // scss-lint:disable DeclarationOrder
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+  @include transition(all .2s ease-in-out);
+  // scss-lint:enable DeclarationOrder
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      @include tab-focus();
+    }
+  }
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+
+  &.focus {
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    background-image: none;
+    outline: 0;
+    // scss-lint:disable DeclarationOrder
+    @include box-shadow($btn-active-box-shadow);
+    // scss-lint:enable DeclarationOrder
+  }
+
+  &:disabled,
+  &.disabled {
+    cursor: $cursor-disabled;
+    opacity: .65;
+    // scss-lint:disable DeclarationOrder
+    @include box-shadow(none);
+    // scss-lint:enable DeclarationOrder
+  }
+
+//----------------------------------------------------------------------------------------------------------------------
+// Color / Theme Modifiers:
+// .btn--primary:     Changes color to primary color scheme
+// .btn--secondary:   Changes color to secondary color scheme
+// .btn--info:        Changes color to info color scheme
+// .btn--success:     Changes color to success color scheme
+// .btn--warning:     Changes color to warning color scheme
+// .btn--danger:      Changes color to danger color scheme
+// .btn--primary-o:   Changes color to primary color scheme with just an outline
+// .btn--secondary-o: Changes color to secondary color scheme with just an outline
+// .btn--info-o:      Changes color to info color scheme with just an outline
+// .btn--success-o:   Changes color to success color scheme with just an outline
+// .btn--warning-o:   Changes color to warning color scheme with just an outline
+// .btn--danger-o:    Changes color to danger color scheme with just an outline
+// Size Modifiers:
+// .btn--lg:          Changes button size to large
+// .btn--sm:          Changes button size to small
+// Misc Modifiers:
+// .btn--block:       Changes button to be a block element instead of inline
+// .btn--link:        Changes button to look like a link
+//----------------------------------------------------------------------------------------------------------------------
+
+  @include modifier('primary') {
+    @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  }
+
+  @include modifier('secondary') {
+    @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+  }
+
+  @include modifier('info') {
+    @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+  }
+
+  @include modifier('success') {
+    @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+  }
+
+  @include modifier('warning') {
+    @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+  }
+
+  @include modifier('danger') {
+    @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+  }
+
+  @include modifier('primary-o') {
+    @include button-outline-variant($btn-primary-bg);
+  }
+
+  @include modifier('secondary-o') {
+    @include button-outline-variant($btn-secondary-bg);
+  }
+
+  @include modifier('info-o') {
+    @include button-outline-variant($btn-info-bg);
+  }
+
+  @include modifier('success-o') {
+    @include button-outline-variant($btn-success-bg);
+  }
+
+  @include modifier('warning-o') {
+    @include button-outline-variant($btn-warning-bg);
+  }
+
+  @include modifier('danger-o') {
+    @include button-outline-variant($btn-danger-bg);
+  }
+
+  @include modifier('lg') {
+    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-border-radius-lg);
+  }
+
+  @include modifier('sm') {
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius-sm);
+  }
+
+  @include modifier('block') {
+    display: block;
+    width: 100%;
+
+    & + & {
+      margin-top: $btn-block-spacing-y;
+    }
+
+
+  }
+
+  // scss-lint:disable DeclarationOrder
+  @include modifier('link') {
+    border-radius: 0;
+    color: $link-color;
+    font-weight: normal;
+
+    &,
+    &:active,
+    &.active,
+    &:disabled {
+      background-color: transparent;
+      @include box-shadow(none);
+    }
+
+    &,
+    &:focus,
+    &:active {
+      border-color: transparent;
+    }
+
+    &:disabled {
+      @include hover-focus {
+        color: $btn-link-disabled-color;
+        text-decoration: none;
+      }
+    }
+
+    @include hover {
+      border-color: transparent;
+    }
+
+    @include hover-focus {
+      background-color: transparent;
+      color: $link-hover-color;
+      text-decoration: $link-hover-decoration;
+    }
+  }
+  // scss-lint:enable DeclarationOrder
+}
+
+
+a.btn.disabled,
+fieldset[disabled] a.btn {
+  pointer-events: none;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn--block {
+    width: 100%;
+  }
+}

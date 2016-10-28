@@ -1,0 +1,478 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    QZion Pulse is a CSS framework that is used in most of the projects by QZion it utilizes Vue.js as well as the
+//    display element flexbox. the hope is that this will grow and have all the same components that main stream CSS
+//    frameworks have if you are interested in being a part of this project feel free to drop a line to info@QZion.net
+//    I would be glad to talk about things we can do.
+//----------------------------------------------------------------------------------------------------------------------
+//                                                       Options
+//----------------------------------------------------------------------------------------------------------------------
+@import 'keyframes';
+
+@mixin animate ($speed: 1s, $count: 1) {
+  animation-duration: $speed;
+  animation-fill-mode: both;
+  animation-iteration-count: $count;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                 Bounce Transitions:
+//                   Vue.js Names -> bounce, bounce--left, bounce--up, bounce--right, bounce--down
+//----------------------------------------------------------------------------------------------------------------------
+//                                                      bounce
+//----------------------------------------------------------------------------------------------------------------------
+.bounce-enter-active {
+  @include animate(.75s);
+  animation-name: bounceIn;
+}
+
+.bounce-leave-active {
+  @include animate(.75s);
+  animation-name: bounceOut;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                      bounce--left
+//----------------------------------------------------------------------------------------------------------------------
+.bounce--left-enter-active {
+  @include animate(.75s);
+  animation-name: bounceInLeft;
+}
+
+.bounce--left-leave-active {
+  @include animate(.75s);
+  animation-name: bounceOutLeft;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                      bounce--up
+//----------------------------------------------------------------------------------------------------------------------
+.bounce--up-enter-active {
+  @include animate(.75s);
+  animation-name: bounceInUp;
+}
+
+.bounce--up-leave-active {
+  @include animate(.75s);
+  animation-name: bounceOutUp;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                      bounce--right
+//----------------------------------------------------------------------------------------------------------------------
+.bounce--right-enter-active {
+  @include animate(.75s);
+  animation-name: bounceInRight;
+}
+
+.bounce--right-leave-active {
+  @include animate(.75s);
+  animation-name: bounceOutRight;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                      bounce--down
+//----------------------------------------------------------------------------------------------------------------------
+.bounce--down-enter-active {
+  @include animate(.75s);
+  animation-name: bounceInDown;
+}
+
+.bounce--down-leave-active {
+  @include animate(.75s);
+  animation-name: bounceOutDown;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                 Fade Transitions:
+//                      Vue.js Names -> fade, fade--left, fade--left-big, fade--up, fade--up-big,
+//                                      fade--right, fade--right-big, fade--down, fade--down-big
+//----------------------------------------------------------------------------------------------------------------------
+//                                                        fade
+//----------------------------------------------------------------------------------------------------------------------
+.fade-enter-active {
+  @include animate();
+  animation-name: fadeIn;
+}
+
+.fade-leave-active {
+  @include animate();
+  animation-name: fadeOut;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                      fade--left
+//----------------------------------------------------------------------------------------------------------------------
+.fade--left-enter-active {
+  @include animate();
+  animation-name: fadeInLeft;
+}
+
+.fade--left-leave-active {
+  @include animate();
+  animation-name: fadeOutLeft;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                     fade--left-big
+//----------------------------------------------------------------------------------------------------------------------
+.fade--left-big-enter-active {
+  @include animate();
+  animation-name: fadeInLeftBig;
+}
+
+.fade--left-big-leave-active {
+  @include animate();
+  animation-name: fadeOutLeftBig;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                      fade--up
+//----------------------------------------------------------------------------------------------------------------------
+.fade--up-enter-active {
+  @include animate();
+  animation-name: fadeInUp;
+}
+
+.fade--up-leave-active {
+  @include animate();
+  animation-name: fadeOutUp;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                      fade--up-big
+//----------------------------------------------------------------------------------------------------------------------
+.fade--up-big-enter-active {
+  @include animate();
+  animation-name: fadeInUpBig;
+}
+
+.fade--up-big-leave-active {
+  @include animate();
+  animation-name: fadeOutUpBig;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                      fade--right
+//----------------------------------------------------------------------------------------------------------------------
+.fade--right-enter-active {
+  @include animate();
+  animation-name: fadeInRight;
+}
+
+.fade--right-leave-active {
+  @include animate();
+  animation-name: fadeOutRight;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                      fade--right-big
+//----------------------------------------------------------------------------------------------------------------------
+.fade--right-big-enter-active {
+  @include animate();
+  animation-name: fadeInRightBig;
+}
+
+.fade--right-big-leave-active {
+  @include animate();
+  animation-name: fadeOutRightBig;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                      fade--down
+//----------------------------------------------------------------------------------------------------------------------
+.fade--down-enter-active {
+  @include animate();
+  animation-name: fadeInDown;
+}
+
+.fade--down-leave-active {
+  @include animate();
+  animation-name: fadeOutDown;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                      fade--down-big
+//----------------------------------------------------------------------------------------------------------------------
+.fade--down-big-enter-active {
+  @include animate();
+  animation-name: fadeInDownBig;
+}
+
+.fade--down-big-leave-active {
+  @include animate();
+  animation-name: fadeOutDownBig;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                 Flip Transitions:
+//                                      Vue.js Names -> flip, flip--x, flip--y
+//----------------------------------------------------------------------------------------------------------------------
+//                                                        flip
+//----------------------------------------------------------------------------------------------------------------------
+.flip-enter-active {
+  @include animate(.75s);
+  animation-name: flip;
+}
+
+.flip-leave-active {
+  @include animate(.75s);
+  animation-name: flip;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                        flip--x
+//----------------------------------------------------------------------------------------------------------------------
+.flip--x-enter-active {
+  @include animate();
+  animation-name: flipInX;
+}
+
+.flip--x-leave-active {
+  @include animate(.75s);
+  animation-name: flipOutX;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                        flip--y
+//----------------------------------------------------------------------------------------------------------------------
+.flip--y-enter-active {
+  @include animate();
+  animation-name: flipInY;
+}
+
+.flip--y-leave-active {
+  @include animate(.75s);
+  animation-name: flipOutY;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                              Lightspeed Transitions:
+//                                            Vue.js Names -> lightspeed
+//----------------------------------------------------------------------------------------------------------------------
+//                                                   lightspeed
+//----------------------------------------------------------------------------------------------------------------------
+.lightspeed-enter-active {
+  @include animate();
+  animation-name: lightSpeedIn;
+}
+
+.lightspeed-leave-active {
+  @include animate();
+  animation-name: lightSpeedOut;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                  Rotating Transitions:
+//      Vue.js Names -> rotate, rotate--down-left, rotate--down-right, rotate--up-left, rotate--up-right
+//----------------------------------------------------------------------------------------------------------------------
+//                                                          Rotate
+//----------------------------------------------------------------------------------------------------------------------
+.rotate-enter-active {
+  @include animate();
+  animation-name: rotateIn;
+}
+
+.rotate-leave-active {
+  @include animate();
+  animation-name: rotateOut;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                        rotate--down-left
+//----------------------------------------------------------------------------------------------------------------------
+.rotate--down-left-enter-active {
+  @include animate();
+  animation-name: rotateInDownLeft;
+}
+
+.rotate--down-left-leave-active {
+  @include animate();
+  animation-name: rotateOutDownLeft;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                        rotate--down-right
+//----------------------------------------------------------------------------------------------------------------------
+.rotate--down-right-enter-active {
+  @include animate();
+  animation-name: rotateInDownRight;
+}
+
+.rotate--down-right-leave-active {
+  @include animate();
+  animation-name: rotateOutDownRight;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                        rotate--up-left
+//----------------------------------------------------------------------------------------------------------------------
+.rotate--up-left-enter-active {
+  @include animate();
+  animation-name: rotateInUpLeft;
+}
+
+.rotate--up-left-leave-active {
+  @include animate();
+  animation-name: rotateOutUpLeft;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                        rotate--up-right
+//----------------------------------------------------------------------------------------------------------------------
+.rotate--up-right-enter-active {
+  @include animate();
+  animation-name: rotateInUpRight;
+}
+
+.rotate--up-right-leave-active {
+  @include animate();
+  animation-name: rotateOutUpRight;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                  Slide Transitions:
+//                          Vue.js Names -> slide--up, slide--down, slide--left, slide--right
+//----------------------------------------------------------------------------------------------------------------------
+//                                                          slide--up
+//----------------------------------------------------------------------------------------------------------------------
+.slide--up-enter-active {
+  @include animate();
+  animation-name: slideInUp;
+}
+
+.slide--up-leave-active {
+  @include animate();
+  animation-name: slideOutUp;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                          slide--down
+//----------------------------------------------------------------------------------------------------------------------
+.slide--down-enter-active {
+  @include animate();
+  animation-name: slideInDown;
+}
+
+.slide--down-leave-active {
+  @include animate();
+  animation-name: slideOutDown;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                          slide--left
+//----------------------------------------------------------------------------------------------------------------------
+.slide--left-enter-active {
+  @include animate();
+  animation-name: slideInLeft;
+}
+
+.slide--left-leave-active {
+  @include animate();
+  animation-name: slideOutLeft;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                          slide--right
+//----------------------------------------------------------------------------------------------------------------------
+.slide--right-enter-active {
+  @include animate();
+  animation-name: slideInRight;
+}
+
+.slide--right-leave-active {
+  @include animate();
+  animation-name: slideOutRight;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                    Zooming Transitions:
+//                           Vue.js Names -> zoom, zoom--down, zoom--left, zoom--right, zoom--up
+//----------------------------------------------------------------------------------------------------------------------
+//                                                          zoom
+//----------------------------------------------------------------------------------------------------------------------
+.zoom-enter-active {
+  @include animate();
+  animation-name: zoomIn;
+}
+
+.zoom-leave-active {
+  @include animate();
+  animation-name: zoomOut;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                          zoom--down
+//----------------------------------------------------------------------------------------------------------------------
+.zoom--down-enter-active {
+  @include animate();
+  animation-name: zoomInDown;
+}
+
+.zoom--down-leave-active {
+  @include animate();
+  animation-name: zoomOutDown;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                          zoom--left
+//----------------------------------------------------------------------------------------------------------------------
+.zoom--left-enter-active {
+  @include animate();
+  animation-name: zoomInLeft;
+}
+
+.zoom--left-leave-active {
+  @include animate();
+  animation-name: zoomOutLeft;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                          zoom--right
+//----------------------------------------------------------------------------------------------------------------------
+.zoom--right-enter-active {
+  @include animate();
+  animation-name: zoomInRight;
+}
+
+.zoom--right-leave-active {
+  @include animate();
+  animation-name: zoomOutRight;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                          zoom--up
+//----------------------------------------------------------------------------------------------------------------------
+.zoom--up-enter-active {
+  @include animate();
+  animation-name: zoomInUp;
+}
+
+.zoom--up-leave-active {
+  @include animate();
+  animation-name: zoomOutUp;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                    Roll Transitions:
+//                                                   Vue.js Names -> roll
+//----------------------------------------------------------------------------------------------------------------------
+//                                                          roll
+//----------------------------------------------------------------------------------------------------------------------
+.roll-enter-active {
+  @include animate();
+  animation-name: rollIn;
+}
+
+.roll-leave-active {
+  @include animate();
+  animation-name: rollOut;
+}
+
+

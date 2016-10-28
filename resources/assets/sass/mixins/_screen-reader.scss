@@ -1,0 +1,42 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    These mixins are used to help you better interact with the screen readers. You should use these as much as
+//    possible to allow for uniformity throughout the project.
+//----------------------------------------------------------------------------------------------------------------------
+//                                                Mixin: sr-only
+//                                      Only display content to screen readers
+//                                                @include sr-only
+//----------------------------------------------------------------------------------------------------------------------
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                            Mixin: sr-only-focusable
+//                               Only display content to screen readers when focused
+//                                           @include sr-only-focusable
+//----------------------------------------------------------------------------------------------------------------------
+@mixin sr-only-focusable {
+  &:active,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+  }
+}

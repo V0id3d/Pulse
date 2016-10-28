@@ -1,0 +1,41 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    These mixins are used to help you better interact with the img elements. You should use these as much as
+//    possible to allow for uniformity throughout the project.
+//----------------------------------------------------------------------------------------------------------------------
+//                                                  Mixin: img-fluid
+//                         Keep Image From Scaling beyond the width of their parents
+// img{
+//   @include img-fluid
+// }
+// CSS Output:
+// img {
+//   max-width: 100%;
+//   height: auto;
+// }
+//----------------------------------------------------------------------------------------------------------------------
+@mixin img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                  Mixin: img-retina
+//                           Short retina mixin for setting background-image and size.
+//                          @include('banner-1x.jpeg', 'banner-2x.jpeg', '500px', '500px')
+//----------------------------------------------------------------------------------------------------------------------
+@mixin img-retina($file-1x, $file-2x, $width-1x, $height-1x) {
+  background-image: url($file-1x);
+
+  @media only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    background-image: url($file-2x);
+    background-size: $width-1x $height-1x;
+  }
+}
+

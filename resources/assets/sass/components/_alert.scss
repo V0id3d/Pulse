@@ -1,0 +1,49 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    QZion Pulse is a CSS framework that is used in most of the projects by QZion it utilizes Vue.js as well as the
+//    display element flexbox. the hope is that this will grow and have all the same components that main stream CSS
+//    frameworks have if you are interested in being a part of this project feel free to drop a line to info@QZion.net
+//    I would be glad to talk about things we can do.
+//----------------------------------------------------------------------------------------------------------------------
+//                                                       Options
+//----------------------------------------------------------------------------------------------------------------------
+.alert {
+  @include border-radius($alert-border-radius);
+  border: $alert-border-width;
+  margin-bottom: $spacer-y;
+  padding: $alert-padding-y $alert-padding-x;
+  padding-right: ($alert-padding-x * 2);
+
+  .close {
+    position: relative;
+    top: -.125rem;
+    right: -$alert-padding-x;
+    color: inherit;
+  }
+
+  @include element('heading') {
+    color: inherit;
+
+  }
+
+  @include modifier('success') {
+    @include alert-variant($alert-success-bg, $alert-success-border, $alert-success-text);
+  }
+
+  @include modifier('error') {
+    @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
+  }
+
+  @include modifier('warning') {
+    @include alert-variant($alert-warning-bg, $alert-warning-border, $alert-warning-text);
+  }
+  @include modifier('info') {
+    @include alert-variant($alert-info-bg, $alert-info-border, $alert-info-text);
+  }
+}

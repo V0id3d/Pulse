@@ -1,0 +1,141 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    QZion Pulse is a CSS framework that is used in most of the projects by QZion it utilizes Vue.js as well as the
+//    display element flexbox. the hope is that this will grow and have all the same components that main stream CSS
+//    frameworks have if you are interested in being a part of this project feel free to drop a line to info@QZion.net
+//    I would be glad to talk about things we can do.
+//----------------------------------------------------------------------------------------------------------------------
+//                                                       Options
+//----------------------------------------------------------------------------------------------------------------------
+.dropdown {
+  position: relative;
+
+  @include element('toggle') {
+    &::after {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: $caret-width;
+      vertical-align: middle;
+      content: '';
+      border-top: $caret-width solid;
+      border-right: $caret-width solid transparent;
+      border-left: $caret-width solid transparent;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  @include element('menu') {
+    background-clip: padding-box;
+    background-color: $dropdown-bg;
+    border: $dropdown-border-color solid $dropdown-border-width;
+    color: $body-color;
+    display: none;
+    float: left;
+    font-size: $font-size-base;
+    left: 0;
+    list-style: none;
+    margin: $dropdown-margin-top 0 0;
+    min-width: $dropdown-min-width;
+    padding: $dropdown-padding-y 0;
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    z-index: $zindex-dropdown;
+    @include border-radius($border-radius);
+    @include box-shadow($dropdown-box-shadow);
+    @include modifier('right') {
+      left: auto;
+      right: 0;
+    }
+    @include modifier('left') {
+      left: 0;
+      right: auto;
+    }
+  }
+
+  @include element('divider') {
+    @include nav-divider($dropdown-divider-bg);
+  }
+
+  @include element('item') {
+    background: none;
+    border: 0;
+    clear: both;
+    color: $dropdown-link-color;
+    display: block;
+    font-weight: normal;
+    padding: 3px $dropdown-item-padding-x;
+    text-align: inherit;
+    white-space: nowrap;
+    width: 100%;
+
+    @include hover-focus {
+      background: $dropdown-link-hover-bg;
+      color: $dropdown-link-hover-color;
+      text-decoration: none;
+    }
+
+    &.active {
+      @include plain-hover-focus {
+        background-color: $dropdown-link-active-bg;
+        color: $dropdown-link-active-color;
+        outline: 0;
+        text-decoration: none;
+      }
+
+      &.disabled {
+        @include plain-hover-focus {
+          color: $dropdown-link-disabled-color;
+        }
+
+        @include hover-focus {
+          background-color: transparent;
+          background-image: none;
+          cursor: $cursor-disabled;
+          text-decoration: none;
+
+          @include reset-filter();
+        }
+      }
+    }
+  }
+
+  @include element('header') {
+    color: $dropdown-header-color;
+    display: block;
+    font-size: $font-size-sm;
+    margin-bottom: 0;
+    padding: $dropdown-padding-y $dropdown-item-padding-x;
+    white-space: nowrap;
+  }
+
+  @include element('backdrop') {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: $zindex-dropdown-backdrop;
+  }
+
+  &.open {
+    > .dropdown__menu {
+      display: block;
+    }
+
+    > a {
+      outline: 0;
+    }
+  }
+}
+

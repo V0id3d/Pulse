@@ -1,0 +1,101 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    QZion Pulse is a CSS framework that is used in most of the projects by QZion it utilizes Vue.js as well as the
+//    display element flexbox. the hope is that this will grow and have all the same components that main stream CSS
+//    frameworks have if you are interested in being a part of this project feel free to drop a line to info@QZion.net
+//    I would be glad to talk about things we can do.
+//----------------------------------------------------------------------------------------------------------------------
+//                             Print Styles added to avoid the additional HTTP request
+//----------------------------------------------------------------------------------------------------------------------
+@if $enable-print-styles {
+  @media print {
+    *,
+    *::before,
+    *::after,
+    *::first-letter,
+    p::first-line,
+    div::first-line,
+    blockquote::first-line,
+    li::first-line {
+      text-shadow: none !important;
+      box-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+      text-decoration: underline;
+    }
+
+    abbr[title]::after {
+      content: ' (' attr(title) ')';
+    }
+
+    pre {
+      white-space: pre-wrap !important;
+    }
+
+    pre,
+    blockquote {
+      border: $border-width solid #999;
+      page-break-inside: avoid;
+    }
+
+    thead {
+      display: table-header-group;
+    }
+
+    tr,
+    img {
+      page-break-inside: avoid;
+    }
+
+    p,
+    h2,
+    h3 {
+      orphans: 3;
+      widows: 3;
+    }
+
+    h2,
+    h3 {
+      page-break-after: avoid;
+    }
+
+    .navbar {
+      display: none;
+    }
+
+    .btn,
+    .dropup > .btn {
+      > .caret {
+        border-top-color: #000 !important;
+      }
+    }
+
+    .tag {
+      border: $border-width solid #000;
+    }
+
+    .table {
+      border-collapse: collapse !important;
+
+      td,
+      th {
+        background-color: #fff !important;
+      }
+    }
+
+    .table-bordered {
+      th,
+      td {
+        border: 1px solid #ddd !important;
+      }
+    }
+  }
+}

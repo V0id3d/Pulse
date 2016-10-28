@@ -1,0 +1,336 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    QZion Pulse is a CSS framework that is used in most of the projects by QZion it utilizes Vue.js as well as the
+//    display element flexbox. the hope is that this will grow and have all the same components that main stream CSS
+//    frameworks have if you are interested in being a part of this project feel free to drop a line to info@QZion.net
+//    I would be glad to talk about things we can do.
+//----------------------------------------------------------------------------------------------------------------------
+//                                                       Options
+//----------------------------------------------------------------------------------------------------------------------
+nav {
+  margin-bottom: 25px;
+}
+
+.navbar {
+  padding: $navbar-padding-y $navbar-padding-x;
+  position: relative;
+
+  @include clearfix;
+
+  @include media-breakpoint-up(sm) {
+    @include border-radius($navbar-border-radius);
+  }
+  @include media-breakpoint-down(sm) {
+    .navbar__nav {
+      display: none;
+    }
+  }
+
+  @include element('divider') {
+    float: left;
+    margin-left: $navbar-padding-x;
+    margin-right: $navbar-padding-x;
+    overflow: hidden;
+    padding-bottom: $navbar-divider-padding-y;
+    padding-top: $navbar-divider-padding-y;
+    width: $border-width;
+
+    &::before {
+      content: "\00a0";
+    }
+  }
+  @include element('text') {
+    display: inline-block;
+    padding-bottom: .425rem;
+    padding-top: .425rem;
+  }
+  @include element('navbar-toggler') {
+    background: transparent no-repeat center center;
+    background-size: 24px 24px;
+    border: $border-width solid transparent;
+    font-size: $navbar-toggler-font-size;
+    height: 2em;
+    line-height: 1;
+    padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
+    width: 2.5em;
+    @include border-radius($navbar-toggler-border-radius);
+
+    @include hover-focus {
+      text-decoration: none;
+    }
+
+  }
+  @include element('nav') {
+    .nav__item {
+      float: left;
+    }
+
+    .nav__link {
+      display: block;
+      padding-bottom: .425rem;
+      padding-top: .425rem;
+
+      + .nav__link {
+        margin-left: 1rem;
+      }
+    }
+
+    .nav__item + .nav__item {
+      margin-left: 1rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+  @include element('header') {
+    float: left;
+    font-size: $font-size-lg;
+    line-height: inherit;
+    margin-right: 1rem;
+    padding-bottom: $navbar-header-padding-y;
+    padding-top: $navbar-header-padding-y;
+
+    @include hover-focus {
+      text-decoration: none;
+    }
+  }
+
+  @include modifier('full') {
+    z-index: $zindex-navbar;
+
+    @include media-breakpoint-up(sm) {
+      @include border-radius(0);
+    }
+  }
+  @include modifier('flex') {
+    display: flex;
+    flex-wrap: wrap;
+
+    > .navbar__header {
+      display: flex;
+      flex-grow: 0;
+      flex-shrink: 1;
+      flex-basis: 10%;
+
+      .navbar__brand {
+        flex: 1 1 0;
+      }
+
+      .navbar__navbar-toggler {
+        display: none;
+        flex: 1 1 0;
+      }
+
+      @include media-breakpoint-down(sm) {
+        flex: 0 0 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        .navbar__brand {
+          flex: 1 0 50%;
+        }
+        .navbar__navbar-toggler {
+          align-self: center;
+          flex: 1 1 0;
+          display: block;
+        }
+      }
+    }
+    > .navbar__nav {
+      flex: 1 1 0;
+      display: flex;
+      justify-content: flex-end;
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+  }
+  @include modifier('fixed-top') {
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: $zindex-navbar-fixed;
+    @include media-breakpoint-up(sm) {
+      @include border-radius(0);
+    }
+  }
+  @include modifier('sticky-top') {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: $zindex-navbar-sticky;
+    @include media-breakpoint-up(sm) {
+      @include border-radius(0);
+    }
+  }
+  @include modifier('toggleable') {
+    @each $breakpoint in map-keys($grid-breakpoints) {
+      $next: breakpoint-next($breakpoint, $grid-breakpoints);
+
+      &-#{$breakpoint} {
+        @include clearfix;
+
+        @include media-breakpoint-down($breakpoint) {
+          .navbar__header {
+            display: block;
+            float: none;
+            margin-right: 0;
+            margin-top: .5rem;
+          }
+
+          .navbar__nav {
+            margin-bottom: .5rem;
+            margin-top: .5rem;
+
+            .dropdown__menu {
+              float: none;
+              position: static;
+            }
+          }
+        }
+
+        @include media-breakpoint-up($next) {
+          display: block;
+        }
+      }
+    }
+    &-xs {
+      @include clearfix;
+      @include media-breakpoint-down(xs) {
+        .navbar__nav .nav__item {
+          float: none;
+          margin-left: 0;
+        }
+      }
+      @include media-breakpoint-up(sm) {
+        display: block !important;
+      }
+    }
+    &-sm {
+      @include clearfix;
+      @include media-breakpoint-down(sm) {
+        .navbar__nav .nav__item {
+          float: none;
+          margin-left: 0;
+        }
+      }
+      @include media-breakpoint-up(md) {
+        display: block !important;
+      }
+    }
+    &-md {
+      @include clearfix;
+      @include media-breakpoint-down(md) {
+        .navbar__nav .nav__item {
+          float: none;
+          margin-left: 0;
+        }
+      }
+      @include media-breakpoint-up(lg) {
+        display: block !important;
+      }
+    }
+  }
+  @include modifier('light') {
+    .navbar__header {
+      color: $navbar-light-active-color;
+
+      @include hover-focus {
+        color: $navbar-light-active-color;
+      }
+    }
+
+    .navbar__navbar-toggler {
+      color: $navbar-light-active-color;
+
+      @include hover-focus {
+        color: $navbar-light-toggler-hover-color;
+      }
+    }
+
+    .navbar__nav {
+      .nav__link {
+        color: $navbar-light-color;
+
+        @include hover-focus {
+          color: $navbar-light-hover-color;
+        }
+      }
+
+      .open > .nav__link,
+      .active > .nav__link,
+      .nav__link.open,
+      .nav__link.active {
+        @include plain-hover-focus {
+          color: $navbar-light-active-color;
+        }
+      }
+    }
+
+    .navbar__navbar-toggler {
+      background-image: $navbar-light-toggler-bg;
+      border-color: $navbar-light-toggler-border;
+    }
+
+    .navbar__divider {
+      background-color: rgba(0, 0, 0, .075);
+    }
+  }
+  @include modifier('dark') {
+    background-color: black;
+    .navbar__header{
+      color: $navbar-dark-active-color;
+
+      @include hover-focus {
+        color: $navbar-dark-active-color;
+      }
+    }
+
+    .navbar__navbar-toggler {
+      color: $navbar-dark-active-color;
+      border-color: $navbar-dark-active-color;
+
+      @include hover-focus {
+        color: $navbar-dark-toggler-hover-color;
+        border-color: $navbar-dark-toggler-hover-color;
+      }
+    }
+
+    .navbar__nav {
+      .nav__link {
+        color: $navbar-dark-color;
+
+        @include hover-focus {
+          color: $navbar-dark-hover-color;
+        }
+      }
+
+      .open > .nav__link,
+      .active > .nav__link,
+      .nav-link.open,
+      .nav-link.active {
+        @include plain-hover-focus {
+          color: $navbar-dark-active-color;
+        }
+      }
+    }
+
+    .navbar__toggler {
+      background-image: $navbar-dark-toggler-bg;
+      border-color: $navbar-dark-toggler-border;
+    }
+
+    .navbar__divider {
+      background-color: rgba(255, 255, 255, .075);
+    }
+  }
+}

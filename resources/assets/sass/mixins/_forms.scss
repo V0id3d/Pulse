@@ -1,0 +1,76 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    These mixins are used to help you better interact with the form elements. You should use these as much as
+//    possible to allow for uniformity throughout the project.
+//----------------------------------------------------------------------------------------------------------------------
+//                                            Mixin: form-control-validation
+//                    This mixin will set the colors for form controls and input groups in your form.
+//----------------------------------------------------------------------------------------------------------------------
+@mixin form-control-validation($color) {
+  .form-control__feadback,
+  .form-control__label,
+  .form__check__label,
+  .form__check--inline {
+    color: $color;
+  }
+
+  .form-control {
+    border-color: $color;
+
+    @if $enable-rounded {
+      &:focus {
+        box-shadow: $input-box-shadow, 0 0 6px lighten($color, 20%);
+      }
+    }
+  }
+
+  .input-group__addon {
+    color: $color;
+    border-color: $color;
+    background-color: lighten($color, 40%);
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                            Mixin: form-control-focus
+//                        This mixin will set the colors for the form controls that have focus
+//----------------------------------------------------------------------------------------------------------------------
+@mixin form-control-focus() {
+  &:focus {
+    background-color: $input-bg-focus;
+    border-color: $input-border-focus;
+    color: $input-color-focus;
+    outline: none;
+    @include box-shadow($input-box-shadow-focus);
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                Mixin: input-size
+//   This mixin will set the sizes, margins, padding, line-height, and border radius for the controls in your forms
+//----------------------------------------------------------------------------------------------------------------------
+@mixin input-size($parent, $input-height, $padding-y, $padding-x, $font-size, $line-height, $border-radius) {
+  #{$parent} {
+    height: $input-height;
+    padding: $padding-y $padding-x;
+    font-size: $font-size;
+    line-height: $line-height;
+    @include border-radius($border-radius);
+  }
+
+  select#{$parent} {
+    height: $input-height;
+    line-height: $input-height;
+  }
+
+  textarea#{$parent},
+  select[multiple]#{$parent} {
+    height: auto;
+  }
+}

@@ -1,0 +1,52 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    QZion Pulse is a CSS framework that is used in most of the projects by QZion it utilizes Vue.js as well as the
+//    display element flexbox. the hope is that this will grow and have all the same components that main stream CSS
+//    frameworks have if you are interested in being a part of this project feel free to drop a line to info@QZion.net
+//    I would be glad to talk about things we can do.
+//----------------------------------------------------------------------------------------------------------------------
+//                                         Responsive Image ( .img-fluid )
+//----------------------------------------------------------------------------------------------------------------------
+.img--responsive,
+.img--fluid {
+  @include img-fluid;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                         Thumbnail Image ( .img-thumbnail )
+//----------------------------------------------------------------------------------------------------------------------
+.img--thumbnail {
+  background-color: $thumbnail-bg;
+  border: $thumbnail-border-color solid $thumbnail-border-width;
+  padding: $thumbnail-padding;
+  transition: all .2s ease-in-out;
+
+  // scss-lint:disable DeclarationOrder
+  @include border-radius($thumbnail-border-radius);
+  @include box-shadow($thumbnail-box-shadow);
+  @include img-fluid;
+  // scss-lint:enable DeclarationOrder
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                           Responsive Image ( .img-fluid )
+//----------------------------------------------------------------------------------------------------------------------
+.figure {
+  display: inline-block;
+
+  @include element('img') {
+    line-height: 1;
+    margin-bottom: ($spacer-y / 2);
+  }
+
+  @include element('caption') {
+    color: $gray-light;
+    font-size: $figure-caption-font-size;
+  }
+}
