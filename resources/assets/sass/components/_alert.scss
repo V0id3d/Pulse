@@ -46,4 +46,52 @@
   @include modifier('info') {
     @include alert-variant($alert-info-bg, $alert-info-border, $alert-info-text);
   }
+
+  @include modifier('top-right') {
+    position: fixed;
+    right: $spacer-y;
+    top: $spacer-x;
+    z-index: 1050;
+  }
+
+  @include modifier('top-left') {
+    left: $spacer-y;
+    position: fixed;
+    top: $spacer-x;
+    z-index: 1050;
+  }
+
+  @include modifier('top') {
+    @include border-top-radius(0);
+    left: 0;
+    margin: 0 auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1050;
+  }
+
+  @include modifier('bottom') {
+    @include border-bottom-radius(0);
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+    position: fixed;
+    right: 0;
+    z-index: 1050;
+  }
+
+  @include modifier('bottom-right') {
+    bottom: $spacer-x;
+    position: fixed;
+    right: $spacer-y;
+    z-index: 1050;
+  }
+
+  @include modifier('bottom-left') {
+    bottom: $spacer-x;
+    left: $spacer-y;
+    position: fixed;
+    z-index: 1050;
+  }
 }

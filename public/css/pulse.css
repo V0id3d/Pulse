@@ -3795,19 +3795,44 @@ dl.row > dd + dt {
       border-top-color: #007fff; }
     .alert--info .alert__link {
       color: #00264d; }
-
-.alert-container--top-right {
-  position: fixed;
-  right: 1rem;
-  top: 1rem;
-  z-index: 1000000; }
-
-.alert-container--top-left {
-  left: 1rem;
-  margin-top: 1rem;
-  position: fixed;
-  top: 1rem;
-  z-index: 1000000; }
+  .alert--top-right {
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    z-index: 1050; }
+  .alert--top-left {
+    left: 1rem;
+    position: fixed;
+    top: 1rem;
+    z-index: 1050; }
+  .alert--top {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    left: 0;
+    margin: 0 auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1050; }
+  .alert--bottom {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+    position: fixed;
+    right: 0;
+    z-index: 1050; }
+  .alert--bottom-right {
+    bottom: 1rem;
+    position: fixed;
+    right: 1rem;
+    z-index: 1050; }
+  .alert--bottom-left {
+    bottom: 1rem;
+    left: 1rem;
+    position: fixed;
+    z-index: 1050; }
 
 .img--responsive,
 .img--fluid {
