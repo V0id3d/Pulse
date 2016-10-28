@@ -52,6 +52,9 @@
             </ul>
         </div>
     </nav>
+    <qz-alertcontainer position="top-right">
+        {{--Insert Error Handling Here--}}
+    </qz-alertcontainer>
     @yield('PageContent')
 </div>
 

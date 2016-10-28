@@ -21,15 +21,14 @@
   padding-right: ($alert-padding-x * 2);
 
   .close {
-    position: relative;
-    top: -.125rem;
-    right: -$alert-padding-x;
     color: inherit;
+    position: relative;
+    right: -$alert-padding-x;
+    top: -.125rem;
   }
 
   @include element('heading') {
     color: inherit;
-
   }
 
   @include modifier('success') {
@@ -43,6 +42,7 @@
   @include modifier('warning') {
     @include alert-variant($alert-warning-bg, $alert-warning-border, $alert-warning-text);
   }
+
   @include modifier('info') {
     @include alert-variant($alert-info-bg, $alert-info-border, $alert-info-text);
   }

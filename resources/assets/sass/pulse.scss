@@ -52,12 +52,13 @@ $enable-print-styles:       true !default;
 //----------------------------------------------------------------------------------------------------------------------
 //                                                  Component CSS
 //----------------------------------------------------------------------------------------------------------------------
+@import 'components/alert';
+@import 'components/alert-container';
 @import 'components/images';
 @import 'components/code';
 @import 'components/tables';
 @import 'components/forms';
 @import 'components/buttons';
-@import 'components/alert';
 @import 'components/close';
 @import 'components/dropdown';
 @import 'components/nav';
