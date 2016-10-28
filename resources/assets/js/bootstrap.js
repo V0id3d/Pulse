@@ -21,6 +21,14 @@ Vue.http.interceptors.push((request, next) => {
 });
 
 /**
+ * Vue 2.0 removed filters that were useful and so we are just adding back the ones
+ * that we really like and used.
+ */
+Vue.filter('capitalize', function (n) {
+    return n[0].toUpperCase() + n.slice(1)
+});
+
+/**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.

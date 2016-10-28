@@ -27,11 +27,6 @@
                 default: 0
             }
         },
-        filters: {
-            capitalize: function (n) {
-                return n[0].toUpperCase() + n.slice(1)
-            }
-        },
         data() {
             return {
                 show: true

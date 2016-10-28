@@ -1,7 +1,10 @@
 @extends('layouts.default')
 
 @section('PageContent')
-    <div class="container-fluid">
+    <div class="container-fluid" style="position: relative">
+        <qz-alert type="error" style="position: absolute; top: 0; right:0;">
+            Example
+        </qz-alert>
         {{--Grid Section--}}
         <section id="grid">
             <h3>Grid</h3>
