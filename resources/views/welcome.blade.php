@@ -360,28 +360,28 @@
             <div class="row">
                 {{--Error Alert Example--}}
                 <div class="col-md-3">
-                    <qz-alert type="error" display>
+                    <qz-alert type="error" transition="bounce">
                         Example
                     </qz-alert>
                 </div>
 
                 {{--Warning Alert Example--}}
                 <div class="col-md-3">
-                    <qz-alert type="warning" display>
+                    <qz-alert type="warning">
                         Example
                     </qz-alert>
                 </div>
 
                 {{--Success Alert Example--}}
                 <div class="col-md-3">
-                    <qz-alert type="success" display>
+                    <qz-alert type="success">
                         Example
                     </qz-alert>
                 </div>
 
                 {{--Info Alert Example--}}
                 <div class="col-md-3">
-                    <qz-alert type="info" display>
+                    <qz-alert type="info">
                         Example
                     </qz-alert>
                 </div>
@@ -400,28 +400,28 @@
             <div class="row">
                 {{--Error Alert Example--}}
                 <div class="col-md-3">
-                    <qz-alert type="error" heading display>
+                    <qz-alert type="error" heading>
                         Example
                     </qz-alert>
                 </div>
 
                 {{--Warning Alert Example--}}
                 <div class="col-md-3">
-                    <qz-alert type="warning" heading display>
+                    <qz-alert type="warning" heading>
                         Example
                     </qz-alert>
                 </div>
 
                 {{--Success Alert Example--}}
                 <div class="col-md-3">
-                    <qz-alert type="success" heading display>
+                    <qz-alert type="success" heading>
                         Example
                     </qz-alert>
                 </div>
 
                 {{--Info Alert Example--}}
                 <div class="col-md-3">
-                    <qz-alert type="info" heading display>
+                    <qz-alert type="info" heading>
                         Example
                     </qz-alert>
                 </div>

@@ -29,7 +29,7 @@
                 type: Number,
                 default: 0
             },
-            display: {
+            hide: {
                 type: Boolean,
                 default: false
             },
@@ -40,7 +40,7 @@
         },
         data() {
             return {
-                show: this.display
+                show: !this.hide
             }
         },
         computed: {
@@ -55,7 +55,10 @@
                     'alert--info': type == 'info',
                     'alert--top': placement == 'top',
                     'alert--top-left': placement == 'top-left',
-                    'alert--top-right': placement == 'top-right'
+                    'alert--top-right': placement == 'top-right',
+                    'alert--bottom': placement == 'bottom',
+                    'alert--bottom-left': placement == 'bottom-left',
+                    'alert--bottom-right': placement == 'bottom-right'
                 };
             },
             alertIcons() {
