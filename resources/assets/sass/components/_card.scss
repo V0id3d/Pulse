@@ -73,7 +73,7 @@
       @include clearfix();
     }
     background-color: $card-cap-bg;
-    border-bottom: $card-border-color solid $card-border-color;
+    border-bottom: $card-border-width solid $card-border-color;
     margin-bottom: 0;
     padding: $card-spacer-y $card-spacer-x;
 
@@ -102,7 +102,7 @@
       @include clearfix();
     }
     background-color: $card-cap-bg;
-    border-top: $card-border-color sold $card-border-width;
+    border-top: $card-border-width solid $card-border-color;
     padding: $card-spacer-y $card-spacer-x;
 
     &:last-child {
