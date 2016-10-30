@@ -1,0 +1,318 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    QZion Pulse is a CSS framework that is used in most of the projects by QZion it utilizes Vue.js as well as the
+//    display element flexbox. the hope is that this will grow and have all the same components that main stream CSS
+//    frameworks have if you are interested in being a part of this project feel free to drop a line to info@QZion.net
+//    I would be glad to talk about things we can do.
+//----------------------------------------------------------------------------------------------------------------------
+//                                                       
+//----------------------------------------------------------------------------------------------------------------------
+.card {
+  background-color: $card-bg;
+  display: block;
+  margin-bottom: $card-spacer-y;
+  position: relative;
+  @include border-radius($card-border-radius);
+
+  > .list-group {
+    &:first-child {
+      @include border-top-radius($card-border-radius);
+    }
+
+    &:last-child {
+      @include border-bottom-radius($card-border-radius);
+    }
+  }
+
+  // .card__block
+  @include element('block') {
+    @if (not $enable-flex) {
+      @include clearfix();
+    }
+    padding: $card-spacer-x;
+  }
+
+  // .card__title
+  @include element('title') {
+    margin-bottom: $card-spacer-y;
+  }
+
+  // .card__subtitle
+  @include element('subtitle') {
+    margin-bottom: 0;
+    margin-top: -($card-spacer-y / 2);
+  }
+
+  // .card__text
+  @include element('text') {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // .card__link
+  @include element('link') {
+    @include hover {
+      text-decoration: none;
+    }
+
+    + .card__link {
+      margin-left: $card-spacer-x;
+    }
+  }
+
+  // .card__header
+  @include element('header') {
+    @if (not $enable-flex) {
+      @include clearfix();
+    }
+    background-color: $card-cap-bg;
+    border-bottom: $card-border-color solid $card-border-color;
+    margin-bottom: 0;
+    padding: $card-spacer-y $card-spacer-x;
+
+    &:first-child {
+      @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+    }
+
+    // .card__header__tabs
+    @include element('tabs') {
+      border-bottom: 0;
+      margin-bottom: -$card-spacer-y;
+      margin-left: -($card-spacer-x / 2);
+      margin-right: -($card-spacer-x / 2);
+    }
+
+    // .card__header__pills
+    @include element ('pills') {
+      margin-left: -($card-spacer-x / 2);
+      margin-right: -($card-spacer-x / 2);
+    }
+  }
+
+  // .card__footer
+  @include element('footer') {
+    @if (not $enable-flex) {
+      @include clearfix();
+    }
+    background-color: $card-cap-bg;
+    border-top: $card-border-color sold $card-border-width;
+    padding: $card-spacer-y $card-spacer-x;
+
+    &:last-child {
+      @include border-radius (0 0 $card-border-radius-inner $card-border-radius-inner);
+    }
+  }
+
+  // .card__blockquote
+  @include element('blockquote') {
+    border-left: 0;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  // .card__img
+  @include element('img') {
+    @include border-radius($card-border-radius-inner);
+
+    // .card__img--overlay
+    @include modifier('overlay') {
+      bottom: 0;
+      left: 0;
+      padding: $card-img-overlay-padding;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    // .card__img--top
+    @include modifier('top') {
+      @include border-top-radius($card-border-radius-inner);
+    }
+
+    // .card__img--bottom
+    @include modifier('bottom') {
+      @include border-bottom-radius($card-border-radius-inner);
+    }
+  }
+
+  // .card--primary
+  @include modifier('primary') {
+    @include card-variant($brand-primary);
+  }
+
+  // .card--success
+  @include modifier('success') {
+    @include card-variant($brand-success);
+  }
+
+  // .card--info
+  @include modifier('info') {
+    @include card-variant($brand-info);
+  }
+
+  // .card--warning
+  @include modifier('warning') {
+    @include card-variant($brand-warning);
+  }
+
+  // .card--danger
+  @include modifier('danger') {
+    @include card-variant($brand-danger);
+  }
+
+  // .card--primary-o
+  @include modifier('primary-o') {
+    @include card-outline-variant($btn-primary-bg);
+  }
+
+  // .card--secondary-o
+  @include modifier('secondary-o') {
+    @include card-outline-variant($btn-secondary-border);
+  }
+
+  // .card--info-o
+  @include modifier('info-o') {
+    @include card-outline-variant($btn-info-bg);
+  }
+
+  // .card--success-o
+  @include modifier('success-o') {
+    @include card-outline-variant($btn-success-bg);
+  }
+
+  // .card--warning-o
+  @include modifier('warning-o') {
+    @include card-outline-variant($btn-warning-bg);
+  }
+
+  // .card--danger-o
+  @include modifier('danger-o') {
+    @include card-outline-variant($btn-danger-bg);
+  }
+
+  // .card--inverse
+  @include modifier('inverse') {
+    @include card-inverse();
+  }
+}
+
+@if $enable-flex {
+  @include media-breakpoint-up(sm) {
+    .card__deck {
+      display: flex;
+      flex-flow: row wrap;
+      margin-bottom: $card-spacer-y;
+      margin-left: -$card-deck-margin;
+      margin-right: -$card-deck-margin;
+
+      .card {
+        flex: 1 0 0;
+        margin-bottom: 0;
+        margin-left: $card-deck-margin;
+        margin-right: $card-deck-margin;
+      }
+    }
+  }
+} @else {
+  @include media-breakpoint-up(sm) {
+    $space-between-cards: (2 * $card-deck-margin);
+
+    .card__deck {
+      display: table;
+      width: 100%;
+      margin-bottom: $card-spacer-y;
+      table-layout: fixed;
+      border-spacing: $space-between-cards 0;
+
+      .card {
+        display: table-cell;
+        margin-bottom: 0;
+        virtical-align: top;
+      }
+    }
+
+    .card__deck__wrapper {
+      margin-left: (-$space-between-cards);
+      margin-right: (-$space-between-cards);
+    }
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .card__group {
+    @if $enable-flex {
+      display: flex;
+      flex-flow: row wrap;
+    } @else {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+    }
+
+    .card {
+      @if $enable-flex {
+        flex: 1 0 0;
+      } @else {
+        display: table-cell;
+        vertical-align: top;
+      }
+
+      + .card {
+        border-left: 0;
+        margin-left: 0;
+      }
+
+      @if $enable-rounded {
+        &:first-child {
+          @include border-right-radius(0);
+
+          .card__img--top {
+            border-top-right-radius: 0;
+          }
+
+          .card__img--bottom {
+            border-bottom-right-radius: 0;
+          }
+        }
+        &:last-child {
+          @include border-left-radius(0);
+
+          .card__img--top {
+            border-top-left-radius: 0;
+          }
+
+          .card__img--bottom {
+            border-bottom-left-radius: 0;
+          }
+        }
+        &:not(:first-child):not(:last-child) {
+          border-radius: 0;
+
+          .card__img--top,
+          .card__img--bottom {
+            border-radius: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .card__columns {
+    column-count: 3;
+    column-gap: $card-columns-sm-up-column-gap;
+
+    .card {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}
