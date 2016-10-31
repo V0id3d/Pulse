@@ -1,0 +1,110 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    Elements:
+//     .pagination -> this is your main paging container
+//     .pagination__item -> this would be the list elements that are inside of your pager
+//     .pagination__link -> this would be the link elements inside of your items.
+//
+//    Modifiers:
+//      .pagination--sm -> this is applied to your main pager element changing the size to small
+//      .pagination--lg -> this is applied to your main pager element changing the size to large
+//
+//    States:
+//      .active -> is applied to the pagination item and will render its defined colors to the link
+//      .disabled -> is applied to the pagination item and will render its defined colors to the link
+//
+//    Syntax:
+//      <ul class="pagination { modifiers: pagination--sm | pagination--lg }">
+//        <li class="pagination__item { modifiers: .active | disabled }">
+//          <a class="pagination__link" href="#">1</a>
+//        </li>
+//        <li class="pagination__item">
+//          <a class="pagination__link" href="#">2</a>
+//        </li>
+//      <ul>
+//----------------------------------------------------------------------------------------------------------------------
+//                                                   .pagination
+//    All of your pagination needs tucked into one class you will start off your pagination container with
+//    .pagination and will end up using .pagination__item and .pagination__link as needed.
+//----------------------------------------------------------------------------------------------------------------------
+.pagination {
+  display: inline-block;
+  margin-bottom: $spacer-y;
+  margin-top: $spacer-y;
+  padding-left: 0;
+  @include border-radius();
+
+  // .pagination__item
+  @include element('item') {
+    display: inline;
+
+    &:first-child {
+      .pagination__link {
+        margin-left: 0;
+        @include border-left-radius($border-radius);
+      }
+    }
+
+    &:last-child {
+      .pagination__link {
+        @include border-right-radius($border-radius);
+      }
+    }
+
+    // .active
+    &.active .pagination__link {
+      @include plain-hover-focus {
+        background-color: $pagination-active-bg;
+        border-color: $pagination-active-border;
+        color: $pagination-active-color;
+        cursor: default;
+        z-index: 2;
+      }
+    }
+
+    // .disabled
+    &.disabled .pagination__link {
+      @include plain-hover-focus {
+        background-color: $pagination-disabled-bg;
+        border-color: $pagination-disabled-border;
+        color: $pagination-disabled-color;
+        cursor: $cursor-disabled;
+        pointer-events: none;
+      }
+    }
+  }
+
+  // .pagination__link
+  @include element('link') {
+    background-color: $pagination-bg;
+    border: $pagination-border-color solid $pagination-border-width;
+    color: $pagination-color;
+    float: left;
+    margin-left: -1px;
+    padding: $pagination-padding-y $pagination-padding-x;
+    position: relative;
+    text-decoration: none;
+
+    @include hover-focus {
+      background-color: $pagination-hover-bg;
+      border-color: $pagination-hover-border;
+      color: $pagination-hover-color;
+    }
+  }
+
+  // .pagination--lg
+  @include modifier('lg') {
+    @include pagination-size($pagination-padding-y-lg, $pagination-padding-x-lg, $font-size-lg, $line-height-lg, $border-radius-lg);
+  }
+
+  // .pagination--sm
+  @include modifier('sm') {
+    @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, $line-height-sm, $border-radius-sm);
+  }
+}
