@@ -1,0 +1,170 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    Elements:
+//      .progress -> this is your main progress container
+//      .progress__bar -> this is the actual bar for ie9
+//
+//    Modifiers:
+//      .progress--striped -> this is applied to your progress container element and will stripe your progress bar
+//      .progress--animated -> this will animate your stripped progress bar
+//      .progress--success -> this will render the bar the color that is set
+//      .progress--info -> this will render the bar the color that is set
+//      .progress--warning -> this will render the bar the color that is set
+//      .progress--danger -> this will render the bar the color that is set
+//
+//    Syntax:
+//      <progress class="progress { modifiers }" value="25" max="100">
+//        <div class="progress { modifiers }">
+//          <span class="progress-bar" style="width: 25%;"></span>
+//        </div>
+//      </progress>
+//----------------------------------------------------------------------------------------------------------------------
+//                                          Keyframes for animation
+//----------------------------------------------------------------------------------------------------------------------
+@keyframes progress-bar-stripes {
+  from {
+    background-position: $spacer-y 0;
+  }
+
+  to {
+    background-position: 0 0;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                   .progress
+//----------------------------------------------------------------------------------------------------------------------
+.progress {
+  display: block;
+  height: $spacer-y;
+  margin-bottom: $spacer-y;
+  width: 100%;
+
+  &[value] {
+    appearance: none;
+    background-color: $progress-bg;
+    border: 0;
+
+    @include border-radius($progress-border-radius);
+  }
+
+  &[value]::-ms-fill {
+    background-color: $progress-bar-color;
+    border: 0;
+  }
+
+  &[value]::-moz-progress-bar {
+    background-color: $progress-bar-color;
+    @include border-left-radius($progress-border-radius)
+  }
+
+  &[value]::-webkit-progress-value {
+    background-color: $progress-bar-color;
+  }
+
+  &[value="100"]::-moz-progress-bar {
+    @include border-right-radius($progress-border-radius);
+  }
+
+  &[value="100"]::-webkit-progress-value {
+    @include border-right-radius($progress-border-radius);
+  }
+
+  &[value]::-webkit-progress-bar {
+    background-color: $progress-bg;
+    @include border-radius($progress-border-radius);
+    @include box-shadow($progress-box-shadow);
+  }
+
+  base::-moz-progress-bar,
+  &[value] {
+    background-color: $progress-bg;
+    @include border-radius($progress-border-radius);
+    @include box-shadow($progress-box-shadow);
+  }
+
+  @media screen and (min-width:0\0) {
+    background-color: $progress-bg;
+    @include border-radius($progress-border-radius);
+    @include box-shadow($progress-box-shadow);
+
+    .progress__bar {
+      background-color: $progress-bar-color;
+      display: inline-block;
+      height: $spacer-y; // Simulate hiding of value as in native `<progress>`
+      text-indent: -999rem;
+      @include border-left-radius($progress-border-radius);
+    }
+
+    &[width="100%"] {
+      @include border-right-radius($progress-border-radius);
+    }
+  }
+
+  // .progress--striped
+  @include modifier('striped') {
+    &[value]::-webkit-progress-value {
+      @include gradient-striped();
+      background-size: $spacer-y $spacer-y;
+    }
+
+    &[value]::-moz-progress-bar {
+      @include gradient-striped();
+    }
+
+    &[value]::-ms-fill {
+      @include gradient-striped();
+      background-size: $spacer-y $spacer-y;
+    }
+
+    @media screen and (min-width:0\0) {
+      .progress__bar {
+        @include gradient-striped();
+        background-size: $spacer-y $spacer-y;
+      }
+    }
+  }
+
+  // .progress--animated
+  @include modifier('animated') {
+    &[value]::-webkit-progress-value {
+      animation: progress-bar-stripes 2s linear infinite;
+    }
+
+    &[value]::-moz-progress-bar {
+      animation: progress-bar-stripes 2s linear infinite;
+    }
+
+    @media screen and (min-width:0\0) {
+      .progress__bar {
+        animation: progress-bar-stripes 2s linear infinite;
+      }
+    }
+  }
+
+  // .progress--success
+  @include modifier('success') {
+    @include progress-variant($progress-bar-success-bg);
+  }
+
+  // .progress--info
+  @include modifier('info') {
+    @include progress-variant($progress-bar-info-bg);
+  }
+
+  // .progress--warning
+  @include modifier('warning') {
+    @include progress-variant($progress-bar-warning-bg);
+  }
+
+  // .progress--danger
+  @include modifier('danger') {
+    @include progress-variant($progress-bar-danger-bg);
+  }
+}

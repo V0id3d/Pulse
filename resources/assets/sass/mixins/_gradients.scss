@@ -1,0 +1,74 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    Gradients:
+//      @include gradient-x( $start-color, $end-color, $start-percent, $end-percent ) -> Create Gradient on X Axis
+//      @include gradient-y( $start-color, $end-color, $start-percent, $end-percent ) -> Create Gradient on Y Axis
+//      @include gradient-directional( $start-color, $end-color, $degree ) -> Create Gradient based on degree
+//      @include gradient-x-three-colors( $start-color, $mid-color, $stop-percent, $end-color ) -> Gradient on X Axis
+//      @include gradient-y-three-colors( $start-color, $mid-color, $stop-percent, $end-color ) -> Gradient on Y Axis
+//      @include gradient-radial( $inner-color, $outer-color ) -> Radial Gradient
+//      @include gradient-striped ( $color, $stripe-angle ) -> Create a gradient with stripes.
+//----------------------------------------------------------------------------------------------------------------------
+//                                                   Mixin: gradient-x
+//----------------------------------------------------------------------------------------------------------------------
+@mixin gradient-x($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                   Mixin: gradient-y
+//----------------------------------------------------------------------------------------------------------------------
+@mixin gradient-y($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                   Mixin: gradient-directional
+//----------------------------------------------------------------------------------------------------------------------
+@mixin gradient-directional($start-color: #555, $end-color: #333, $deg: 45deg) {
+  background-repeat: repeat-x;
+  background-image: linear-gradient($deg, $start-color, $end-color);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                   Mixin: gradient-x-three-colors
+//----------------------------------------------------------------------------------------------------------------------
+@mixin gradient-x-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
+  background-image: linear-gradient(to right, $start-color, $mid-color $color-stop, $end-color);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 gets no color-stop at all for proper fallback
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                   Mixin: gradient-y-three-colors
+//----------------------------------------------------------------------------------------------------------------------
+@mixin gradient-y-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
+  background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 gets no color-stop at all for proper fallback
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                   Mixin: gradient-radial
+//----------------------------------------------------------------------------------------------------------------------
+@mixin gradient-radial($inner-color: #555, $outer-color: #333) {
+  background-image: radial-gradient(circle, $inner-color, $outer-color);
+  background-repeat: no-repeat;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                                   Mixin: gradient-striped
+//----------------------------------------------------------------------------------------------------------------------
+@mixin gradient-striped($color: rgba(255,255,255,.15), $angle: 45deg) {
+  background-image: linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
+}
