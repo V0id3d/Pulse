@@ -18,15 +18,15 @@
 
   @include element('toggle') {
     &::after {
+      border-left: $caret-width solid transparent;
+      border-right: $caret-width solid transparent;
+      border-top: $caret-width solid;
+      content: '';
       display: inline-block;
-      width: 0;
       height: 0;
       margin-left: $caret-width;
       vertical-align: middle;
-      content: '';
-      border-top: $caret-width solid;
-      border-right: $caret-width solid transparent;
-      border-left: $caret-width solid transparent;
+      width: 0;
     }
 
     &:focus {
@@ -51,12 +51,15 @@
     text-align: left;
     top: 100%;
     z-index: $zindex-dropdown;
+
     @include border-radius($border-radius);
     @include box-shadow($dropdown-box-shadow);
+
     @include modifier('right') {
       left: auto;
       right: 0;
     }
+
     @include modifier('left') {
       left: 0;
       right: auto;

@@ -59,9 +59,9 @@ $enable-print-styles:       true !default;
 @import 'components/forms';
 @import 'components/buttons';
 @import 'components/close';
-@import 'components/dropdown';
-@import 'components/nav';
-@import 'components/navbar';
+@import 'components/dropdown';      // <- Needs Work
+@import 'components/nav';           // <- Needs Work
+@import 'components/navbar';        // <- Needs Work
 @import 'components/card';
 @import 'components/breadcrumb';
 @import 'components/pagination';
@@ -76,3 +76,7 @@ $enable-print-styles:       true !default;
 //----------------------------------------------------------------------------------------------------------------------
 @import 'transitions/transitions';
 
+
+.clearfix {
+  @include clearfix;
+}

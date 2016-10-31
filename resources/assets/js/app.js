@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 Vue.component('qz-alert', require('./components/Alert.vue'));
+Vue.component('qz-dropdown', require('./components/Dropdown.vue'));
 
 const app = new Vue({
     el: '#app'
