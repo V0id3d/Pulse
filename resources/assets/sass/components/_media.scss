@@ -1,0 +1,81 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    {{ About SCSS File }}
+//----------------------------------------------------------------------------------------------------------------------
+//                                                   {{ About Class }}
+//----------------------------------------------------------------------------------------------------------------------
+
+@if $enable-flex {
+  .media {
+    display: flex;
+  }
+
+
+  .media__middle {
+    flex: 1;
+  }
+
+  .media--middle {
+    align-self: center;
+  }
+
+  .media--bottom {
+    align-self: flex-end;
+  }
+} @else {
+  &,
+  .media__body {
+    overflow: hidden;
+  }
+
+  .media__body {
+    width: 10000px;
+  }
+
+  .media--left,
+  .media--right,
+  .media__body {
+    display: table-cell;
+    vertical-align: top;
+  }
+
+  .media--middle {
+    vertical-align: middle;
+  }
+
+  .media--bottom {
+    vertical-align: bottom;
+  }
+}
+
+.media__object {
+  display: block;
+
+  &.img--thumbnail {
+    max-width: none;
+  }
+}
+
+.media__heading {
+  margin-bottom: $media-heading-margin-bottom;
+  margin-top: 0;
+}
+
+.media--right {
+  padding-left: $media-alignment-padding-x;
+}
+
+.media--left {
+  padding-right: $media-alignment-padding-x;
+}
+
+.media--list {
+  list-style: none;
+  padding-left: 0;
+}

@@ -7817,6 +7817,55 @@ nav {
     }
 }
 
+.media {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.media__middle {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.media--middle {
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+}
+
+.media--bottom {
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+}
+
+.media__object {
+    display: block;
+}
+
+.media__object.img--thumbnail {
+    max-width: none;
+}
+
+.media__heading {
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+.media--right {
+    padding-left: 10px;
+}
+
+.media--left {
+    padding-right: 10px;
+}
+
+.media--list {
+    list-style: none;
+    padding-left: 0;
+}
+
 .animated {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
