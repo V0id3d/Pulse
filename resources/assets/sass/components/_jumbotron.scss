@@ -1,0 +1,48 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    Elements:
+//     .jumbotron -> this is your main jumbotron container
+//     .jumbotron__hr -> This sets the color an hr element in the jumbotron
+//
+//    Modifiers:
+//      .jumbotron--fluid -> This is applied to your main container making it take the whole width and removing the
+//                           radius.
+//
+//    Syntax:
+//      <div class="jumbotron">
+//        <h1>Title</h1>
+//        <hr class="jumbotron__hr">
+//        <p>This is just an example of a jumbotron</p>
+//      </div>
+//----------------------------------------------------------------------------------------------------------------------
+//                                                   {{ About Class }}
+//----------------------------------------------------------------------------------------------------------------------
+.jumbotron {
+  background-color: $jumbotron-bg;
+  margin-bottom: $jumbotron-padding;
+  padding: $jumbotron-padding ($jumbotron-padding / 2);
+  @include border-radius($border-radius-lg);
+
+  @include media-breakpoint-up(sm) {
+    padding: ($jumbotron-padding * 2) $jumbotron-padding;
+  }
+
+  // .jumbotron__hr
+  @include element('hr') {
+    border-top-color: darken($jumbotron-bg, 10%);
+  }
+
+  // .jumbotron--fluid
+  @include modifier('fluid') {
+    padding-left: 0;
+    padding-right: 0;
+
+    @include border-radius(0);
+  }
+}
