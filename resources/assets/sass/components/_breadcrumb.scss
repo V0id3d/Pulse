@@ -1,0 +1,48 @@
+//----------------------------------------------------------------------------------------------------------------------
+//                                       ___   _____            ___      _
+//                                      / _ \ |_  (_)___ _ _   | _ \_  _| |______
+//                                     | (_) | / /| / _ \ ' \  |  _/ || | (_-< -_)
+//                                     \__\_\/___|_\___/_||_| |_|  \_,_|_/__|___|
+//                                                   [QZion Pulse]
+//                                                   -Version 0.1-
+//----------------------------------------------------------------------------------------------------------------------
+//    QZion Pulse is a CSS framework that is used in most of the projects by QZion it utilizes Vue.js as well as the
+//    display element flexbox. the hope is that this will grow and have all the same components that main stream CSS
+//    frameworks have if you are interested in being a part of this project feel free to drop a line to info@QZion.net
+//    I would be glad to talk about things we can do.
+//----------------------------------------------------------------------------------------------------------------------
+//                                                       
+//----------------------------------------------------------------------------------------------------------------------
+.breadcrumb {
+  padding: $breadcrumb-padding-y $breadcrumb-padding-x;
+  margin-bottom: $spacer-y;
+  list-style: none;
+  background-color: $breadcrumb-bg;
+  @include border-radius($border-radius);
+  @include clearfix();
+
+  // .breadcrumb__item
+  @include element('item') {
+    float: left;
+
+    + .breadcrumb__item::before {
+      color: $breadcrumb-divider-color;
+      content: '#{$breadcrumb-divider}';
+      display: inline-block;
+      padding-left: $breadcrumb-item-padding;
+      padding-right: $breadcrumb-item-padding;
+    }
+
+    + .breadcrumb__item:hover::before {
+      text-decoration: underline;
+    }
+
+    + .breadcrumb__item:hover::before {
+      text-decoration: none;
+    }
+
+    &.active {
+      color: $breadcrumb-active-color;
+    }
+  }
+}
