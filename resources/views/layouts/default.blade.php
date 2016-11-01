@@ -41,6 +41,8 @@
                 <li class="nav__item"><a class="nav__link" href="#">Products</a></li>
                 <li class="nav__item"><a class="nav__link" href="#">Services</a></li>
                 <li class="nav__item"><a class="nav__link" href="#">About</a></li>
+                <qz-dropdown text="Dropdown" transition="flip--x"></qz-dropdown>
+
                 {{--<li class="nav__item dropdown">--}}
                 {{--<a class="nav__link dropdown__toggle" href="http://example.com" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>--}}
                 {{--<div class="dropdown__menu" aria-labelledby="supportedContentDropdown">--}}

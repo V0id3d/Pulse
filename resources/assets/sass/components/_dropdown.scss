@@ -35,12 +35,16 @@
   }
 
   @include element('menu') {
+    @if($enable-flex){
+      display: flex;
+      flex-direction: column;
+    } @else {
+      float: left;
+    }
     background-clip: padding-box;
     background-color: $dropdown-bg;
     border: $dropdown-border-color solid $dropdown-border-width;
     color: $body-color;
-    display: none;
-    float: left;
     font-size: $font-size-base;
     left: 0;
     list-style: none;
@@ -129,16 +133,6 @@
     right: 0;
     top: 0;
     z-index: $zindex-dropdown-backdrop;
-  }
-
-  &.open {
-    > .dropdown__menu {
-      display: block;
-    }
-
-    > a {
-      outline: 0;
-    }
   }
 }
 

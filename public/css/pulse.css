@@ -4613,12 +4613,17 @@ button.close {
   .dropdown__toggle:focus {
     outline: 0; }
   .dropdown__menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
     background-clip: padding-box;
     background-color: #fff;
     border: rgba(0, 0, 0, 0.15) solid 1px;
     color: #cccccc;
-    display: none;
-    float: left;
     font-size: 1rem;
     left: 0;
     list-style: none;
@@ -4683,10 +4688,6 @@ button.close {
     right: 0;
     top: 0;
     z-index: 990; }
-  .dropdown.open > .dropdown__menu {
-    display: block; }
-  .dropdown.open > a {
-    outline: 0; }
 
 .nav {
   list-style: none;

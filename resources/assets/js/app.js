@@ -9,6 +9,8 @@ require('./bootstrap');
 
 Vue.component('qz-alert', require('./components/Alert.vue'));
 Vue.component('qz-dropdown', require('./components/Dropdown.vue'));
+Vue.directive('click-out', require('./directives/click-outside'));
+
 
 const app = new Vue({
     el: '#app'
