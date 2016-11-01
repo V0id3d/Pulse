@@ -1,66 +1,52 @@
-<!--<template>-->
-    <!--<div class="dropdown open">-->
-        <!--<button class="btn btn&#45;&#45;secondary dropdown__toggle" type="button" id="dropdownMenuButton">-->
-            <!--Dropdown button-->
-        <!--</button>-->
-        <!--<div class="dropdown__menu">-->
-            <!--<a class="dropdown__item" href="#">Action</a>-->
-            <!--<a class="dropdown__item" href="#">Another action</a>-->
-            <!--<a class="dropdown__item" href="#">Something else here</a>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</template>-->
 <template>
-    <div :class="{ open: show, dropdown: !dropup, dropup: dropup}">
-        <button class="dropdown__toggle"
-                aria-expanded="{{ show }}"
-                @click = "toggle($event)"
-                :disabled = 'disabled'>
-            <span v-html="text" v-show="text"></span>
+    <div :class="dropdownClasses">
+        <button class="btn btn--secondary dropdown__toggle" type="button" id="dropdownMenuButton" @click="toggleOpen">
+            {{ text | capitalize }}
         </button>
-        <ul class="dropdown__menu">
-            <li @click="clicked" class="dropdown__item">Somewhere here</li>
-            <li @click="clicked" class="dropdown__item">Another page link</li>
-        </ul>
+        <transition :name="transition">
+            <ul class="dropdown__menu" v-show="opened">
+                <a class="dropdown__item" href="#">Action</a>
+                <a class="dropdown__item" href="#">Another action</a>
+                <a class="dropdown__item" href="#">Something else here</a>
+            </ul>
+        </transition>
+
     </div>
 </template>
-
 
 <script type="text/babel">
     export default {
         data() {
             return {
-                show: false
+                opened: false,
             }
+        },
+        computed: {
+            // Sets the classes on the dropdown element.
+            dropdownClasses () {
+              return {
+                  'dropdown': true,
+                  'open': true
+              }
+          }
         },
         props: {
             text: {
                 type: String,
                 default: ''
             },
-            disabled: {
-                type: Boolean,
-                default: false
+            transition: {
+                type: String,
+                default: 'flip--x'
             },
         },
         methods: {
-            toggle(e) {
-                this.show = !this.show;
-                if (this.show) {
-                    this.$dispatch('shown::dropdown');
-                    e.stopPropagation();
-                } else {
-                    this.$dispatch('hidden::dropdown');
-                }
-            },
-            clicked() {
-                this.show = false;
+            toggleOpen: function () {
+                this.opened = !this.opened
             }
         },
         events: {
-            'hide::dropdown'() {
-                this.show = false;
-            }
+
         }
     }
 </script>
