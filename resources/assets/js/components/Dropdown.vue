@@ -1,6 +1,6 @@
 <template>
     <li :class="dropdownClasses" v-if="isUl" v-click-out="collapse">
-        <a href="#" class="nav__link dropdown__toggle" @click.prevent="toggleOpen">
+        <a href="#" :class="toggleClasses" @click.prevent="toggleOpen">
             {{ text | capitalize }}
         </a>
         <transition :name="transition">
@@ -40,6 +40,13 @@
                   'dropdown__item': this.isUl && this.inDropdown
               }
             },
+            toggleClasses () {
+                return {
+                    'nav__item': this.isUl && !this.inDropdown,
+                    'dropdown__item': this.isUl && this.inDropdown,
+                    'dropdown__toggle': true,
+                }
+            }
         },
         props: {
             text: {
