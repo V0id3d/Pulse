@@ -289,26 +289,31 @@ nav {
     }
   }
   @include modifier('dark') {
-    background-color: black;
-    .navbar__header{
+    background-color: $navbar-dark-bg;
+
+    .navbar__header {
       color: $navbar-dark-active-color;
 
       @include hover-focus {
         color: $navbar-dark-active-color;
       }
     }
-
     .navbar__navbar-toggler {
-      color: $navbar-dark-active-color;
       border-color: $navbar-dark-active-color;
+      color: $navbar-dark-active-color;
 
       @include hover-focus {
-        color: $navbar-dark-toggler-hover-color;
         border-color: $navbar-dark-toggler-hover-color;
+        color: $navbar-dark-toggler-hover-color;
       }
     }
 
-    .navbar__nav {
+    .nav__item {
+      @include active-state {
+        > .nav__link {
+          color: $navbar-dark-active-color;
+        }
+      }
       .nav__link {
         color: $navbar-dark-color;
 
@@ -316,16 +321,62 @@ nav {
           color: $navbar-dark-hover-color;
         }
       }
+    }
 
-      .open > .nav__link,
-      .active > .nav__link,
-      .nav-link.open,
-      .nav-link.active {
-        @include plain-hover-focus {
+    .dropdown {
+      @include active-state {
+        > .dropdown__toggle {
           color: $navbar-dark-active-color;
         }
       }
+
+      @include hover-focus {
+        > .dropdown__toggle {
+          color: $navbar-dark-hover-color;
+        }
+      }
     }
+
+    .dropdown__menu {
+      background-color: $navbar-dark-dropdown-bg;
+
+      .dropdown__item {
+        color: $navbar-dark-dropdown-color;
+
+        @include hover-focus {
+          background: $navbar-dark-dropdown-hover-bg;
+          color: $navbar-dark-dropdown-hover-color;
+        }
+
+        @include active-state {
+          background: $navbar-dark-dropdown-hover-bg;
+          color: $navbar-dark-dropdown-active-color;
+        }
+      }
+      .dropdown {
+        padding-left: $dropdown-padding-y;
+        padding-right: $dropdown-padding-y;
+      }
+    }
+
+    //.navbar__nav {
+    //    .nav__link {
+    //      color: $navbar-dark-color;
+    //
+    //      @include hover-focus {
+    //        color: $navbar-dark-hover-color;
+    //      }
+    //    }
+    //
+    //    .open > .nav__link,
+    //    .active > .nav__link,
+    //    .nav-link.open,
+    //    .nav-link.active {
+    //      @include plain-hover-focus {
+    //        color: $navbar-dark-active-color;
+    //      }
+    //    }
+    //}
 
     .navbar__toggler {
       background-image: $navbar-dark-toggler-bg;

@@ -20,6 +20,16 @@ $body-color: darken($white, 20%);
 //                                                    Navbar Options
 //----------------------------------------------------------------------------------------------------------------------
 $navbar-header-padding-y: 0;
+$navbar-dark-bg:    #000;
+$navbar-dark-color: lighten($navbar-dark-bg, 90%);
+$navbar-dark-active-color: $brand-accent;
+$navbar-dark-hover-color: lighten($navbar-dark-active-color, 10%);
+$navbar-dark-dropdown-bg: lighten($navbar-dark-bg, 20%);
+$navbar-dark-dropdown-color: lighten($navbar-dark-dropdown-bg, 50%);
+$navbar-dark-dropdown-hover-color: $navbar-dark-hover-color;
+$navbar-dark-dropdown-active-color: $navbar-dark-active-color;
+$navbar-dark-dropdown-hover-bg: transparent;
+
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                     Alert Options

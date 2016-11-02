@@ -1059,7 +1059,11 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <qz-dropdown text="Dropdown" transition="flip--x"></qz-dropdown>
+                    <dropdown text="Dropdown" transition="flip--x">
+                        <dropdown-item>Item 1</dropdown-item>
+                        <dropdown-item>Item 2</dropdown-item>
+                        <dropdown-item>Item 3</dropdown-item>
+                    </dropdown>
                 </div>
                 <div class="col-md-12">
                     <pre><code>

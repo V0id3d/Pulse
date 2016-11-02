@@ -5,9 +5,7 @@
         </a>
         <transition :name="transition">
             <ul class="dropdown__menu dropdown__menu--right" v-show="opened">
-                <li class="nav__item"><a class="dropdown__item" href="#">Option 1</a></li>
-                <li><a class="dropdown__item" href="#">Option 2</a></li>
-                <li><a class="dropdown__item" href="#">Option 3</a></li>
+                <slot></slot>
             </ul>
         </transition>
     </li>
@@ -17,9 +15,7 @@
         </a>
         <transition :name="transition">
             <ul class="dropdown__menu" v-show="opened">
-                <li><a class="dropdown__item" href="#">Option 1</a></li>
-                <li><a class="dropdown__item" href="#">Option 2</a></li>
-                <li><a class="dropdown__item" href="#">Option 3</a></li>
+                <slot></slot>
             </ul>
         </transition>
     </div>
@@ -30,7 +26,8 @@
         data() {
             return {
                 opened: false,
-                isUl: null
+                isUl: null,
+                inDropdown: null,
             }
         },
         computed: {
@@ -39,9 +36,10 @@
               return {
                   'dropdown': true,
                   'active': this.opened,
-                  'nav__item': this.isUl,
+                  'nav__item': this.isUl && !this.inDropdown,
+                  'dropdown__item': this.isUl && this.inDropdown
               }
-          }
+            },
         },
         props: {
             text: {
@@ -65,7 +63,9 @@
             }
         },
         mounted () {
-            this.isUl = (this.$el.parentElement.tagName == 'UL')
+            this.isUl = (this.$el.parentElement.tagName == 'UL');
+            let parentString = this.$el.parentElement.className;
+            this.inDropdown = parentString.includes('dropdown__menu');
         }
     }
 </script>

@@ -83,7 +83,8 @@
 @mixin hover-focus-active {
   @if $enable-hover-media-query {
     &:focus,
-    &:active {
+    &:active,
+    &.active {
       @content
     }
 
@@ -91,7 +92,8 @@
   } @else {
     &:focus,
     &:active,
-    &:hover {
+    &:hover,
+    &.active {
       @content
     }
   }
@@ -103,13 +105,20 @@
     &:focus {
       @content
     }
+
     @include hover { @content }
-  }
-  @else {
+  } @else {
     &,
     &:focus,
     &:hover {
       @content
     }
+  }
+}
+
+@mixin active-state {
+  &:active,
+  &.active {
+    @content;
   }
 }

@@ -5082,32 +5082,40 @@ nav {
   .navbar--light .navbar__divider {
     background-color: rgba(0, 0, 0, 0.075); }
   .navbar--dark {
-    background-color: black; }
+    background-color: #000; }
     .navbar--dark .navbar__header {
-      color: white; }
+      color: #f00; }
       .navbar--dark .navbar__header:hover, .navbar--dark .navbar__header:focus {
-        color: white; }
+        color: #f00; }
     .navbar--dark .navbar__navbar-toggler {
-      color: white;
-      border-color: white; }
+      border-color: #f00;
+      color: #f00; }
       .navbar--dark .navbar__navbar-toggler:hover, .navbar--dark .navbar__navbar-toggler:focus {
-        color: #f00;
-        border-color: #f00; }
-    .navbar--dark .navbar__nav .nav__link {
-      color: rgba(255, 255, 255, 0.5); }
-      .navbar--dark .navbar__nav .nav__link:hover, .navbar--dark .navbar__nav .nav__link:focus {
-        color: rgba(255, 255, 255, 0.75); }
-    .navbar--dark .navbar__nav .open > .nav__link, .navbar--dark .navbar__nav .open > .nav__link:focus, .navbar--dark .navbar__nav .open > .nav__link:hover,
-    .navbar--dark .navbar__nav .active > .nav__link,
-    .navbar--dark .navbar__nav .active > .nav__link:focus,
-    .navbar--dark .navbar__nav .active > .nav__link:hover,
-    .navbar--dark .navbar__nav .nav-link.open,
-    .navbar--dark .navbar__nav .nav-link.open:focus,
-    .navbar--dark .navbar__nav .nav-link.open:hover,
-    .navbar--dark .navbar__nav .nav-link.active,
-    .navbar--dark .navbar__nav .nav-link.active:focus,
-    .navbar--dark .navbar__nav .nav-link.active:hover {
-      color: white; }
+        border-color: #f00;
+        color: #f00; }
+    .navbar--dark .nav__item:active > .nav__link, .navbar--dark .nav__item.active > .nav__link {
+      color: #f00; }
+    .navbar--dark .nav__item .nav__link {
+      color: #e6e6e6; }
+      .navbar--dark .nav__item .nav__link:hover, .navbar--dark .nav__item .nav__link:focus {
+        color: #ff3333; }
+    .navbar--dark .dropdown:active > .dropdown__toggle, .navbar--dark .dropdown.active > .dropdown__toggle {
+      color: #f00; }
+    .navbar--dark .dropdown:hover > .dropdown__toggle, .navbar--dark .dropdown:focus > .dropdown__toggle {
+      color: #ff3333; }
+    .navbar--dark .dropdown__menu {
+      background-color: #333333; }
+      .navbar--dark .dropdown__menu .dropdown__item {
+        color: #b3b3b3; }
+        .navbar--dark .dropdown__menu .dropdown__item:hover, .navbar--dark .dropdown__menu .dropdown__item:focus {
+          background: transparent;
+          color: #ff3333; }
+        .navbar--dark .dropdown__menu .dropdown__item:active, .navbar--dark .dropdown__menu .dropdown__item.active {
+          background: transparent;
+          color: #f00; }
+      .navbar--dark .dropdown__menu .dropdown {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem; }
     .navbar--dark .navbar__toggler {
       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
       border-color: rgba(255, 255, 255, 0.1); }

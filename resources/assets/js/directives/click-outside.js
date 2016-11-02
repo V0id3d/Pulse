@@ -12,6 +12,10 @@
             el[HANDLER] = function(click_event) {
                 if(!el.contains(click_event.target)) {
                     return callback(click_event);
+                } else if (el.contains(click_event.target)){
+                    if (!click_event.target.children.length && click_event.target.parentNode.__vue__.$options._componentTag !== 'dropdown') {
+                        return callback(click_event);
+                    }
                 }
             };
             document.documentElement.addEventListener('click', el[HANDLER], false);
