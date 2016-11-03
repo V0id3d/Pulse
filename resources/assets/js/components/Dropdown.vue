@@ -37,12 +37,12 @@
                   'dropdown': true,
                   'active': this.opened,
                   'nav__item': this.isUl && !this.inDropdown,
-                  'dropdown__item': this.isUl && this.inDropdown
+//                  'dropdown__item': this.isUl && this.inDropdown
               }
             },
             toggleClasses () {
                 return {
-                    'nav__item': this.isUl && !this.inDropdown,
+                    'nav__link': this.isUl && !this.inDropdown,
                     'dropdown__item': this.isUl && this.inDropdown,
                     'dropdown__toggle': true,
                 }

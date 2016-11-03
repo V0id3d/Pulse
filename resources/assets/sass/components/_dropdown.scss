@@ -15,9 +15,23 @@
 //----------------------------------------------------------------------------------------------------------------------
 .dropdown {
   position: relative;
-
+  @include active-state {
+    > .dropdown__toggle::after {
+      border-bottom: $caret-width solid;
+      border-left: $caret-width solid transparent;
+      border-right: $caret-width solid transparent;
+      border-top: 0;
+      content: '';
+      display: inline-block;
+      height: 0;
+      margin-left: $caret-width;
+      vertical-align: middle;
+      width: 0;
+    }
+  }
   @include element('toggle') {
     &::after {
+      border-bottom: 0;
       border-left: $caret-width solid transparent;
       border-right: $caret-width solid transparent;
       border-top: $caret-width solid;

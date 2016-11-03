@@ -20,8 +20,27 @@ nav {
 .navbar {
   padding: $navbar-padding-y $navbar-padding-x;
   position: relative;
+  @if (not $enable-flex){
+    @include clearfix;
+  }
 
-  @include clearfix;
+  .dropdown__menu {
+    .dropdown__menu {
+      @include border-radius(0);
+      border-color: $brand-accent;
+      border-left: 0;
+      border-right: 0;
+      padding: 0;
+      position: static;
+
+    }
+  }
+
+  .container,
+  .container--fluid {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   @include media-breakpoint-up(sm) {
     @include border-radius($navbar-border-radius);
@@ -45,14 +64,22 @@ nav {
       content: "\00a0";
     }
   }
-
   @include element('text') {
     display: inline-block;
     padding-bottom: .425rem;
     padding-top: .425rem;
   }
-
   @include element('navbar-toggler') {
+    @if ($enable-flex){
+      display: none;
+      flex: 1 1 0;
+
+      @include media-breakpoint-down(sm) {
+        align-self: center;
+        flex: 1 1 0;
+        display: block;
+      }
+    }
     background: transparent no-repeat center center;
     background-size: 24px 24px;
     border: $border-width solid transparent;
@@ -68,10 +95,21 @@ nav {
     }
 
   }
-
   @include element('nav') {
+    @if($enable-flex) {
+      display: flex;
+      flex: 1 1 0;
+      justify-content: flex-end;
+    }
+
     .nav__item {
-      float: left;
+      @if($enable-flex){
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      } @else {
+        float: left;
+      }
     }
 
     .nav__link {
@@ -87,13 +125,33 @@ nav {
     .nav__item + .nav__item {
       margin-left: 1rem;
     }
-
-    @include media-breakpoint-down(sm) {
-      display: none;
-    }
   }
   @include element('header') {
-    float: left;
+    @if ($enable-flex){
+      display: flex;
+      flex-basis: 10%;
+      flex-grow: 0;
+      flex-shrink: 1;
+
+      .navbar__brand {
+        flex: 1 1 0;
+      }
+
+      @include media-breakpoint-down(sm) {
+        display: flex;
+        flex: 0 0 100%;
+        flex-direction: column;
+        justify-content: center;
+
+        .navbar__brand {
+          flex: 1 0 50%;
+        }
+      }
+
+    } @else {
+      float: left;
+    }
+
     font-size: $font-size-lg;
     line-height: inherit;
     margin-right: 1rem;
@@ -180,12 +238,24 @@ nav {
       $next: breakpoint-next($breakpoint, $grid-breakpoints);
 
       &-#{$breakpoint} {
-        @include clearfix;
+        @if($enable-flex){
+          align-items: center;
+          display: flex;
+          justify-content: center;
+        } @else {
+          @include clearfix;
+        }
 
         @include media-breakpoint-down($breakpoint) {
           .navbar__header {
-            display: block;
-            float: none;
+            @if($enable-flex) {
+              align-items: center;
+              display: flex;
+              justify-content: center;
+            } @else {
+              display: block;
+              float: none;
+            }
             margin-right: 0;
             margin-top: .5rem;
           }
@@ -195,8 +265,14 @@ nav {
             margin-top: .5rem;
 
             .dropdown__menu {
-              float: none;
-              position: static;
+              @if($enable-flex) {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+              } @else {
+                float: none;
+                position: static;
+              }
             }
           }
         }
@@ -207,22 +283,41 @@ nav {
       }
     }
     &-xs {
-      @include clearfix;
+      @if($enable-flex) {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      } @else {
+        @include clearfix;
+      }
+
       @include media-breakpoint-down(xs) {
         .navbar__nav .nav__item {
-          float: none;
+          @if (not $enable-flex) {
+            float: none;
+          }
           margin-left: 0;
         }
       }
+
       @include media-breakpoint-up(sm) {
         display: block !important;
       }
     }
+
     &-sm {
-      @include clearfix;
+      @if($enable-flex){
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      } @else {
+        @include clearfix;
+      }
       @include media-breakpoint-down(sm) {
         .navbar__nav .nav__item {
-          float: none;
+          @if(not $enable-flex){
+            float: none;
+          }
           margin-left: 0;
         }
       }
@@ -230,11 +325,20 @@ nav {
         display: block !important;
       }
     }
+
     &-md {
-      @include clearfix;
+      @if($enable-flex){
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      } @else {
+        @include clearfix;
+      }
       @include media-breakpoint-down(md) {
         .navbar__nav .nav__item {
-          float: none;
+          @if(not $enable-flex){
+            float: none;
+          }
           margin-left: 0;
         }
       }
@@ -353,10 +457,7 @@ nav {
           color: $navbar-dark-dropdown-active-color;
         }
       }
-      .dropdown {
-        padding-left: $dropdown-padding-y;
-        padding-right: $dropdown-padding-y;
-      }
+
     }
 
     //.navbar__nav {
@@ -387,4 +488,5 @@ nav {
       background-color: rgba(255, 255, 255, .075);
     }
   }
+
 }
