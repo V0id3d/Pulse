@@ -12,6 +12,8 @@ require('./bootstrap');
 Vue.component('qz-alert', require('./components/Alert.vue'));
 Vue.component('dropdown', require('./components/Dropdown.vue'));
 Vue.component('dropdown-item', require('./components/Dropdown-Item.vue'));
+Vue.component('navigation', require('./components/Navigation.vue'));
+
 Vue.directive('click-out', require('./directives/click-outside'));
 
 

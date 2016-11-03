@@ -37,7 +37,7 @@
                   'dropdown': true,
                   'active': this.opened,
                   'nav__item': this.isUl && !this.inDropdown,
-//                  'dropdown__item': this.isUl && this.inDropdown
+                  'dropdown--full-width': true
               }
             },
             toggleClasses () {

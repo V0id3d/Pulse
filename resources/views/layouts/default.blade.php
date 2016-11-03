@@ -23,51 +23,31 @@
 
 <body>
 <div id="app">
-    <nav class="navbar navbar--dark navbar--full">
-        <div class="container--fluid navbar--flex">
-            <div class="navbar__header">
-                {{--<button type="button" class="navbar__toggle" data-toggle="collapse" data-target="#pulse-navbar-collapse">--}}
-                {{--<span class="icon-bar"></span>--}}
-                {{--<span class="icon-bar"></span>--}}
-                {{--<span class="icon-bar"></span>--}}
-                {{--</button>--}}
-                <a href="#" class="navbar__brand">
-                    <img src="/assets/QZPulse.svg" alt="Pulse Logo" class="img--responsive">
-                </a>
-                <a href="#" class="navbar__navbar-toggler"><i class="fa fa-bars"></i></a>
-            </div>
-            <ul class="nav navbar__nav navbar--flex" id="pulse-navbar-collapse">
-                <li class="nav__item active"><a class="nav__link" href="#">Home</a></li>
-                <li class="nav__item"><a class="nav__link" href="#">Products</a></li>
-                <li class="nav__item"><a class="nav__link" href="#">Services</a></li>
-                <li class="nav__item"><a class="nav__link" href="#">About</a></li>
-                <dropdown text="Dropdown" transition="flip--x">
-                    <dropdown-item>-Item 1</dropdown-item>
-                    <dropdown text="Dropdown" transition="flip--y">
-                        <dropdown-item>-Item 1</dropdown-item>
-                        <dropdown-item>-Item 2</dropdown-item>
-                        <dropdown-item>-Item 3</dropdown-item>
-                        <dropdown text="Dropdown" transition="flip--y">
-                            <dropdown-item>--Item 1</dropdown-item>
-                            <dropdown-item>--Item 2</dropdown-item>
-                            <dropdown-item>--Item 3</dropdown-item>
-                        </dropdown>
-                    </dropdown>
-                    <dropdown-item>-Item 2</dropdown-item>
-                    <dropdown-item>-Item 3</dropdown-item>
-                </dropdown>
-
-                {{--<li class="nav__item dropdown">--}}
-                {{--<a class="nav__link dropdown__toggle" href="http://example.com" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>--}}
-                {{--<div class="dropdown__menu" aria-labelledby="supportedContentDropdown">--}}
-                {{--<a class="dropdown__item" href="#">Action</a>--}}
-                {{--<a class="dropdown__item" href="#">Another action</a>--}}
-                {{--<a class="dropdown__item" href="#">Something else here</a>--}}
-                {{--</div>--}}
-                {{--</li>--}}
-            </ul>
+    <navigation fixedWidth>
+        <div class="navbar__header">
+            <a href="#" class="navbar__brand">
+                <img src="/assets/QZPulse.svg" alt="Pulse Logo" class="img--responsive">
+            </a>
+            <a href="#" class="navbar__navbar-toggler"><i class="fa fa-bars"></i></a>
         </div>
-    </nav>
+        <ul class="nav navbar__nav navbar--flex" id="pulse-navbar-collapse">
+            <li class="nav__item active"><a class="nav__link" href="#">Home</a></li>
+            <dropdown text="Components" transition="flip--x">
+                <dropdown-item>Alerts</dropdown-item>
+                <dropdown-item>Buttons</dropdown-item>
+                <dropdown-item>Dropdowns</dropdown-item>
+                <dropdown-item>Form Elements</dropdown-item>
+                <dropdown-item>Grid System</dropdown-item>
+                <dropdown-item>Navigation</dropdown-item>
+                <dropdown-item>Tables</dropdown-item>
+            </dropdown>
+            <dropdown text="About" transition="flip--x">
+                <dropdown-item>Contact Us</dropdown-item>
+                <dropdown-item>Pulse CSS</dropdown-item>
+                <dropdown-item>QZion</dropdown-item>
+            </dropdown>
+        </ul>
+    </navigation>
     @yield('PageContent')
 </div>
 
