@@ -4700,29 +4700,6 @@ button.close {
     right: 0;
     top: 0;
     z-index: 990; }
-  .dropdown--full-width {
-    position: static; }
-    .dropdown--full-width > .dropdown__menu {
-      justify-self: center;
-      -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-      border-top: 0;
-      margin-top: 0;
-      left: 0;
-      right: 0;
-      position: absolute;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-      flex-direction: row;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      width: 80%; }
 
 .nav {
   list-style: none;
@@ -5089,6 +5066,43 @@ nav {
       border-color: #e6e6e6; }
     .navbar--dark .navbar__divider {
       background-color: rgba(255, 255, 255, 0.075); }
+  .navbar--horizontal-dropdown .dropdown {
+    position: static; }
+    .navbar--horizontal-dropdown .dropdown > .dropdown__menu {
+      background-color: rgba(51, 51, 51, 0.9);
+      border-top: 0;
+      left: 1rem;
+      margin-top: 0;
+      position: absolute;
+      right: 1rem;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+      .navbar--horizontal-dropdown .dropdown > .dropdown__menu .dropdown__menu {
+        border-top: 1px solid #f00; }
+      .navbar--horizontal-dropdown .dropdown > .dropdown__menu > li {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 0;
+        flex: 0 0 0; }
+      .navbar--horizontal-dropdown .dropdown > .dropdown__menu .dropdown__item {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center; }
 
 .card {
   background-color: #fff;

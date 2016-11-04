@@ -250,119 +250,6 @@ nav {
 
 
     }
-
-    //@each $breakpoint in map-keys($grid-breakpoints) {
-    //  $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    //
-    //  &-#{$breakpoint} {
-    //    @if($enable-flex){
-    //      align-items: center;
-    //      display: flex;
-    //      justify-content: center;
-    //    } @else {
-    //      @include clearfix;
-    //    }
-    //
-    //    @include media-breakpoint-down($breakpoint) {
-    //      .navbar__header {
-    //        @if($enable-flex) {
-    //          align-items: center;
-    //          display: flex;
-    //          justify-content: center;
-    //        } @else {
-    //          display: block;
-    //          float: none;
-    //        }
-    //        margin-right: 0;
-    //        margin-top: .5rem;
-    //      }
-    //
-    //      .navbar__nav {
-    //        margin-bottom: .5rem;
-    //        margin-top: .5rem;
-    //
-    //        .dropdown__menu {
-    //          @if($enable-flex) {
-    //            align-items: center;
-    //            display: flex;
-    //            justify-content: center;
-    //          } @else {
-    //            float: none;
-    //            position: static;
-    //          }
-    //        }
-    //      }
-    //    }
-    //
-    //    @include media-breakpoint-up($next) {
-    //      display: block;
-    //    }
-    //  }
-    //}
-    //&-xs {
-    //  @if($enable-flex) {
-    //    align-items: center;
-    //    display: flex;
-    //    justify-content: center;
-    //  } @else {
-    //    @include clearfix;
-    //  }
-    //
-    //  @include media-breakpoint-down(xs) {
-    //    .navbar__nav .nav__item {
-    //      @if (not $enable-flex) {
-    //        float: none;
-    //      }
-    //      margin-left: 0;
-    //    }
-    //  }
-    //
-    //  @include media-breakpoint-up(sm) {
-    //    display: block !important;
-    //  }
-    //}
-    //
-    //&-sm {
-    //  @if($enable-flex){
-    //    align-items: center;
-    //    display: flex;
-    //    justify-content: center;
-    //  } @else {
-    //    @include clearfix;
-    //  }
-    //  @include media-breakpoint-down(sm) {
-    //    .navbar__nav .nav__item {
-    //      @if(not $enable-flex){
-    //        float: none;
-    //      }
-    //      margin-left: 0;
-    //    }
-    //  }
-    //  @include media-breakpoint-up(md) {
-    //    display: block !important;
-    //  }
-    //}
-    //
-    //&-md {
-    //  @if($enable-flex){
-    //    align-items: center;
-    //    display: flex;
-    //    justify-content: center;
-    //  } @else {
-    //    @include clearfix;
-    //  }
-    //  @include media-breakpoint-down(md) {
-    //    .navbar__nav .nav__item {
-    //      @if(not $enable-flex){
-    //        float: none;
-    //      }
-    //      margin-left: 0;
-    //    }
-    //  }
-    //  @include media-breakpoint-up(lg) {
-    //    display: block !important;
-    //  }
-    //}
   }
   // .navbar--light
   @include modifier('light') {
@@ -508,5 +395,47 @@ nav {
       background-color: rgba(255, 255, 255, .075);
     }
   }
+  @include modifier('horizontal-dropdown') {
+    .dropdown {
+      position: static;
 
+      > .dropdown__menu {
+        background-color: transparentize($navbar-dark-dropdown-bg, .1);
+        border-top: 0;
+        left: $navbar-padding-x;
+        margin-top: 0;
+        position: absolute;
+        right: $navbar-padding-x;
+
+        .dropdown__menu {
+          border-top: $dropdown-border-width solid $brand-accent;
+        }
+
+        @if($enable-flex) {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          flex-wrap: wrap;
+          > li {
+            flex: 0 0 0;
+          }
+
+          .dropdown__item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        } @else {
+          display: block;
+          list-style: none;
+          text-align: center;
+          > li {
+            display: inline-block;
+            width: auto;
+          }
+        }
+
+      }
+    }
+  }
 }

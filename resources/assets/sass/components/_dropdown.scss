@@ -150,22 +150,5 @@
     top: 0;
     z-index: $zindex-dropdown-backdrop;
   }
-
-  @include modifier('full-width') {
-    position: static;
-    > .dropdown__menu {
-      justify-self: center;
-      align-self: center;
-      border-top: 0;
-      margin-top: 0;
-      left: 0;
-      right: 0;
-      position: absolute;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      width: 80%;
-    }
-  }
 }
 

@@ -23,7 +23,7 @@
 
 <body>
 <div id="app">
-    <navigation fixedWidth>
+    <navigation fixedWidth dropdown="horizontal">
         <div class="navbar__header">
             <a href="#" class="navbar__brand">
                 <img src="/assets/QZPulse.svg" alt="Pulse Logo" class="img--responsive">

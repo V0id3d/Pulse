@@ -7,14 +7,6 @@
 </template>
 <script>
     export default {
-        data () {
-            return {
-                'fixed': this.fixed,
-                'responsive':   ! this.nonResponsive,
-                'fullWidth':    this.fullWidth,
-                'fixedWidth':   this.fixedWidth
-            }
-        },
         props: {
             // Fixed To Location
             fixed: {
@@ -41,16 +33,28 @@
             style: {
                 type: String,
                 default: 'dark'
+            },
+            // vertical: first menu will be vertical
+            // horizontal: first dropdown menu will be horizontal
+            dropdown: {
+                type: String,
+                default: 'vertical',
+            }
+        },
+        data () {
+            return {
+                'responsive':   ! this.nonResponsive,
             }
         },
         computed: {
             mainNavClasses() {
                 return {
-                    'navbar'            :   true,
-                    'navbar--responsive':   ! this.nonResponsive,
-                    'navbar--full'      :   this.fullWidth,
-                    'navbar--dark'      :   this.style == 'dark',
-                    'navbar--light'     :   this.style == 'light'
+                    'navbar'                        :   true,
+                    'navbar--responsive'            :   ! this.nonResponsive,
+                    'navbar--full'                  :   this.fullWidth,
+                    'navbar--dark'                  :   this.style == 'dark',
+                    'navbar--light'                 :   this.style == 'light',
+                    'navbar--horizontal-dropdown'   :   this.dropdown != 'vertical'
                 }
             },
             containerClasses() {

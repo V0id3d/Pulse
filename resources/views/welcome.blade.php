@@ -1,6 +1,7 @@
 @extends('layouts.default')
 
 @section('PageContent')
+    <picture href="/assets/QZPulse.svg"></picture>
     <div class="container-fluid">
         {{--Grid Section--}}
         <section id="grid">
@@ -1079,6 +1080,7 @@
     &lt;/div>
                         </code></pre>
             </div>
+                </div>
         </section>
     </div>
 @endsection
