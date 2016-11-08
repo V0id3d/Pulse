@@ -44,7 +44,7 @@
         methods: {
             getImage (){
                 this.$http.get(this.href).then((response) => {
-                    console.log(response.body);
+                    console.log(response.blobText);
                 }, (response) => {
                     console.log(response);
                 });
