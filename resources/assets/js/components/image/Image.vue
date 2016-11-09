@@ -1,3 +1,4 @@
+<!--Todo: Implement SVG / Image picker-->
 <template>
 
 </template>
@@ -22,7 +23,8 @@
             }
         },
         mounted (){
-            this.getImage();
+            this.origin = this.getImage();
+
 //            this.$http.get(this.href).then(
 //                    (response) => {
 //////                        this.$set('imgResponse', success.text());
@@ -44,14 +46,20 @@
         methods: {
             getImage (){
                 let image = new XMLHttpRequest();
+                let svgText = null;
                 image.open('GET', this.href);
-                image.onload = function () {
-                    console.log(image.responseText);
-                };
                 image.send();
-//                this.$http.get(this.href)
-//                        .then((response) => { return response.content })
-//                        .then((response) => { this.origin = response});
+                image.onload = function () {
+//                    console.log(image.responseText);
+                    this.$set('imgResponse', image.responseText)
+                };
+                console.log(svgText);
+
+
+
+                this.$http.get(this.href)
+                        .then((response) => { return response })
+                        .then((response) => { this.origin = response });
             }
         },
         components: {

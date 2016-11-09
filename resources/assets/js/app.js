@@ -13,7 +13,7 @@ Vue.component('qz-alert', require('./components/alert/Alert.vue'));
 Vue.component('dropdown', require('./components/dropdown/Dropdown.vue'));
 Vue.component('dropdown-item', require('./components/dropdown/Dropdown-Item.vue'));
 Vue.component('navigation', require('./components/navigation/Navigation.vue'));
-Vue.component('picture', require('./components/image/Image.vue'));
+
 
 Vue.directive('click-out', require('./directives/click-outside'));
 
