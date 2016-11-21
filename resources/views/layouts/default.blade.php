@@ -24,13 +24,10 @@
 <body>
 <div id="app">
     <navigation fixedWidth dropdown="horizontal">
-        <div class="navbar__header">
-            <a href="#" class="navbar__brand">
-                <img src="/assets/QZPulse.svg" alt="Pulse Logo" class="img--responsive">
-            </a>
-            <a href="#" class="navbar__navbar-toggler"><i class="fa fa-bars"></i></a>
-        </div>
-        <ul class="nav navbar__nav navbar--flex" id="pulse-navbar-collapse">
+        <nav-header>
+            <img src="/assets/QZPulse.svg" alt="Pulse Logo" class="img--responsive">
+        </nav-header>
+        <nav-menu>
             <li class="nav__item active"><a class="nav__link" href="#">Home</a></li>
             <dropdown text="Components" transition="flip--x">
                 <dropdown-item>Alerts</dropdown-item>
@@ -46,7 +43,7 @@
                 <dropdown-item>Pulse CSS</dropdown-item>
                 <dropdown-item>QZion</dropdown-item>
             </dropdown>
-        </ul>
+        </nav-menu>
     </navigation>
     @yield('PageContent')
 </div>

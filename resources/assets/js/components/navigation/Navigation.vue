@@ -63,6 +63,6 @@
                     'container--fluid':     ! this.fixedWidth
                 }
             }
-        }
+        },
     }
 </script>
